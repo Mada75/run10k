@@ -5,6 +5,7 @@ import "firebase/auth";
 
 import Login from "@/views/Login";
 import Dashboard from "@/views/Dashboard";
+import MyPlan from "@/views/MyPlan";
 import Settings from "@/views/Settings";
 
 Vue.use(Router);
@@ -27,6 +28,14 @@ const router = new Router({
       path: "/dashboard",
       name: "Dashboard",
       component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/myplan",
+      name: "MyPlan",
+      component: MyPlan,
       meta: {
         requiresAuth: true
       }

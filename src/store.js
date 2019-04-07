@@ -32,6 +32,7 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    // https://vuex.vuejs.org/guide/actions.html
     clearData({ commit }) {
       commit("setCurrentUser", null);
       commit("setUserProfile", {});

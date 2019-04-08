@@ -15,7 +15,7 @@ header {
     $white 100%
   );
 
-  @media screen and (max-width: 742px) {
+  @media screen and (max-width: 600px) {
     height: 100vh;
     background: $white;
   }
@@ -25,14 +25,14 @@ header {
     height: 100vh;
     padding-top: 30vh;
 
-    @media screen and (max-width: 742px) {
+    @media screen and (max-width: 600px) {
       height: auto;
       padding-top: 20vh;
     }
   }
   .col1 {
     color: $white;
-    @media screen and (max-width: 742px) {
+    @media screen and (max-width: 600px) {
       display: none;
     }
 
@@ -50,7 +50,7 @@ header {
   .signup-form {
     padding-top: 20vh;
 
-    @media screen and (max-width: 742px) {
+    @media screen and (max-width: 600px) {
       padding-top: 10vh;
     }
   }

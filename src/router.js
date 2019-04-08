@@ -3,10 +3,12 @@ import Router from "vue-router";
 import firebase from "firebase/app";
 import "firebase/auth";
 
+import Home from "@/views/Home";
 import Login from "@/views/Login";
 import Dashboard from "@/views/Dashboard";
 import MyPlan from "@/views/MyPlan";
 import Settings from "@/views/Settings";
+import Error404 from "@/views/Error404.vue";
 
 Vue.use(Router);
 
@@ -17,7 +19,12 @@ const router = new Router({
     // Create a catchall route to handle incorrect routes.
     {
       path: "*",
-      redirect: "/dashboard"
+      redirect: "/404"
+    },
+    {
+      path: "/home",
+      name: "Home",
+      component: Home
     },
     {
       path: "/login",
@@ -47,6 +54,11 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: "/404",
+      name: "404",
+      component: Error404
     }
   ]
 });
@@ -67,9 +79,9 @@ else
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
   const currentUser = firebase.auth().currentUser;
-
+  // redirect to home if needs auth & not logged in
   if (requiresAuth && !currentUser) {
-    next("/login");
+    next("/home");
   } else if (requiresAuth && currentUser) {
     next();
   } else {

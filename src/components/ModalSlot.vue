@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import ModalComponent from "@/components/ModalComponent";
+import ModalComponent from '@/components/ModalComponent'
 export default {
   props: {
     activity: {
       type: Object,
       required: true,
       default: function() {
-        return { message: "hello" };
+        return { message: 'hello' }
       }
     }
   },
@@ -24,17 +24,17 @@ export default {
     ModalComponent
   },
   data() {
-    return {};
+    return {}
   },
   // escape key closes modal
   mounted: function() {
-    document.addEventListener("keydown", e => {
+    document.addEventListener('keydown', e => {
       if (this.activity.modal && e.keyCode == 27) {
-        this.activity.modal = false;
+        this.activity.modal = false
       }
-    });
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,5 +1,16 @@
 <template>
-  <div class="about">
-    <h1>dashboard</h1>
+  <div>
+    <app-dashboard />
   </div>
 </template>
+
+<script>
+import AppDashboard from '@/components/AppDashboard.vue'
+export default {
+  components: {
+    AppDashboard
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>

@@ -15,16 +15,16 @@
 export default {
   data() {
     return {
-      adp: "https://adp-cv.firebaseapp.com/",
-      MIT: "http://opensource.org/licenses/mit-license.php",
-      licence: "http://creativecommons.org/licenses/by-nc-sa/4.0/"
-    };
+      adp: 'https://adp-cv.firebaseapp.com/',
+      MIT: 'http://opensource.org/licenses/mit-license.php',
+      licence: 'http://creativecommons.org/licenses/by-nc-sa/4.0/'
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "src/assets/scss/_global.scss";
+@import 'src/assets/scss/_global.scss';
 
 .footer {
   display: flex;

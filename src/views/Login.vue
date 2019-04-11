@@ -21,8 +21,8 @@
               target="_blank"
               >runner's world</a
             >
-            plan that I have modified based on my own experience. <br />Firebase
-            authorisation based on a guide by
+            plan that I have modified based on my own experience.
+            <br />Firebase authorisation based on a guide by
             <a
               href="https://savvyapps.com/blog/definitive-guide-building-web-app-vuejs-firebase"
               target="_blank"
@@ -202,73 +202,73 @@
 
 <script>
 // import firebase bits
-const fb = require("../firebaseConfig.js");
+const fb = require('../firebaseConfig.js')
 export default {
   data() {
     return {
       loginForm: {
-        email: "",
-        password: ""
+        email: '',
+        password: ''
       },
       signupForm: {
-        name: "",
-        title: "",
-        email: "",
-        password: ""
+        name: '',
+        title: '',
+        email: '',
+        password: ''
       },
       passwordForm: {
-        email: ""
+        email: ''
       },
       showLoginForm: true,
       showForgotPassword: false,
       passwordResetSuccess: false,
       performingRequest: false,
-      errorMsg: ""
-    };
+      errorMsg: ''
+    }
   },
   methods: {
     toggleForm() {
-      this.errorMsg = "";
-      this.showLoginForm = !this.showLoginForm;
+      this.errorMsg = ''
+      this.showLoginForm = !this.showLoginForm
     },
     togglePasswordReset() {
       if (this.showForgotPassword) {
-        this.showLoginForm = true;
-        this.showForgotPassword = false;
-        this.passwordResetSuccess = false;
+        this.showLoginForm = true
+        this.showForgotPassword = false
+        this.passwordResetSuccess = false
       } else {
-        this.showLoginForm = false;
-        this.showForgotPassword = true;
+        this.showLoginForm = false
+        this.showForgotPassword = true
       }
     },
     login() {
-      this.performingRequest = true;
+      this.performingRequest = true
       fb.auth
         .signInWithEmailAndPassword(
           this.loginForm.email,
           this.loginForm.password
         )
         .then(res => {
-          this.$store.commit("setCurrentUser", res.user);
-          this.$store.dispatch("fetchUserProfile");
-          this.performingRequest = false;
-          this.$router.push("/dashboard");
+          this.$store.commit('setCurrentUser', res.user)
+          this.$store.dispatch('fetchUserProfile')
+          this.performingRequest = false
+          this.$router.push('/dashboard')
         })
         .catch(err => {
-          console.log(err);
-          this.performingRequest = false;
-          this.errorMsg = err.message;
-        });
+          console.log(err)
+          this.performingRequest = false
+          this.errorMsg = err.message
+        })
     },
     signup() {
-      this.performingRequest = true;
+      this.performingRequest = true
       fb.auth
         .createUserWithEmailAndPassword(
           this.signupForm.email,
           this.signupForm.password
         )
         .then(res => {
-          this.$store.commit("setCurrentUser", res.user);
+          this.$store.commit('setCurrentUser', res.user)
           // create user obj
           fb.usersCollection
             .doc(res.user.uid)
@@ -276,42 +276,42 @@ export default {
               name: this.signupForm.name
             })
             .then(() => {
-              this.$store.dispatch("fetchUserProfile");
-              this.performingRequest = false;
-              this.$router.push("/dashboard");
+              this.$store.dispatch('fetchUserProfile')
+              this.performingRequest = false
+              this.$router.push('/dashboard')
             })
             .catch(err => {
-              console.log(err);
-              this.performingRequest = false;
-              this.errorMsg = err.message;
-            });
+              console.log(err)
+              this.performingRequest = false
+              this.errorMsg = err.message
+            })
         })
         .catch(err => {
-          console.log(err);
-          this.performingRequest = false;
-          this.errorMsg = err.message;
-        });
+          console.log(err)
+          this.performingRequest = false
+          this.errorMsg = err.message
+        })
     },
     resetPassword() {
-      this.performingRequest = true;
+      this.performingRequest = true
       fb.auth
         .sendPasswordResetEmail(this.passwordForm.email)
         .then(() => {
-          this.performingRequest = false;
-          this.passwordResetSuccess = true;
-          this.passwordForm.email = "";
+          this.performingRequest = false
+          this.passwordResetSuccess = true
+          this.passwordForm.email = ''
         })
         .catch(err => {
-          console.log(err);
-          this.performingRequest = false;
-          this.errorMsg = err.message;
-        });
+          console.log(err)
+          this.performingRequest = false
+          this.errorMsg = err.message
+        })
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
-@import "src/assets/scss/_global.scss";
+@import 'src/assets/scss/_global.scss';
 .wrapper {
   display: flex;
   flex-direction: row;

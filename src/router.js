@@ -1,67 +1,67 @@
-import Vue from "vue";
-import Router from "vue-router";
-import firebase from "firebase/app";
-import "firebase/auth";
+import Vue from 'vue'
+import Router from 'vue-router'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
-import Home from "@/views/Home";
-import Login from "@/views/Login";
-import Dashboard from "@/views/Dashboard";
-import MyPlan from "@/views/MyPlan";
-import Settings from "@/views/Settings";
-import Error404 from "@/views/Error404.vue";
+import Home from '@/views/Home'
+import Login from '@/views/Login'
+import Dashboard from '@/views/Dashboard'
+import MyPlan from '@/views/MyPlan'
+import Settings from '@/views/Settings'
+import Error404 from '@/views/Error404.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
 const router = new Router({
   // History mode allows us to use more readable url paths (/dashboard) as opposed to the default option (/#/dashboard).
-  mode: "history",
+  mode: 'history',
   routes: [
     // Create a catchall route to handle incorrect routes.
     {
-      path: "*",
-      redirect: "/404"
+      path: '*',
+      redirect: '/404'
     },
     {
-      path: "/home",
-      name: "Home",
+      path: '/home',
+      name: 'Home',
       component: Home
     },
     {
-      path: "/login",
-      name: "Login",
+      path: '/login',
+      name: 'Login',
       component: Login
     },
     {
-      path: "/dashboard",
-      name: "Dashboard",
+      path: '/dashboard',
+      name: 'Dashboard',
       component: Dashboard,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/myplan",
-      name: "MyPlan",
+      path: '/myplan',
+      name: 'MyPlan',
       component: MyPlan,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/settings",
-      name: "Settings",
+      path: '/settings',
+      name: 'Settings',
       component: Settings,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/404",
-      name: "404",
+      path: '/404',
+      name: '404',
       component: Error404
     }
   ]
-});
+})
 /*
 Step 6: Set up the
 beforeEach
@@ -77,16 +77,16 @@ else
 */
 
 router.beforeEach((to, from, next) => {
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
-  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
+  const currentUser = firebase.auth().currentUser
   // redirect to home if needs auth & not logged in
   if (requiresAuth && !currentUser) {
-    next("/home");
+    next('/home')
   } else if (requiresAuth && currentUser) {
-    next();
+    next()
   } else {
-    next();
+    next()
   }
-});
+})
 
-export default router;
+export default router

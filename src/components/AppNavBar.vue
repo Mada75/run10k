@@ -37,30 +37,30 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 
-const fb = require("../firebaseConfig.js");
+const fb = require('../firebaseConfig.js')
 export default {
   computed: {
-    ...mapState(["currentUser"])
+    ...mapState(['currentUser'])
   },
   methods: {
     logout() {
       fb.auth
         .signOut()
         .then(() => {
-          this.$store.dispatch("clearData");
-          this.$router.push("/login");
+          this.$store.dispatch('clearData')
+          this.$router.push('/login')
         })
         .catch(err => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
-@import "src/assets/scss/_global.scss";
+@import 'src/assets/scss/_global.scss';
 .active {
   background: yellow;
 }

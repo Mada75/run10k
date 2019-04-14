@@ -5,7 +5,7 @@
 </template>
 <script>
 import { db } from '../../firebaseConfig.js'
-import { weekOne } from './weekClass'
+import { weekOne, weekTwo, weekThree, weekFour, weekFive, weekSix, weekSeven, weekEight } from './weekClass'
 
 export default {
   data() {
@@ -14,12 +14,13 @@ export default {
     }
   },
   created() {
-    console.log(weekOne)
+    // move each week object into an Array
+    let weeksArray = weekOne.concat(weekTwo, weekThree, weekFour, weekFive, weekSix, weekSeven, weekEight); 
+    
+    // convert the Array to a String
+    const daysString = JSON.stringify(weeksArray)
 
-    // save the 'weekOne' Array as a String
-    const daysString = JSON.stringify(weekOne)
-
-    // convert the String to a javaScript Object
+    // convert the String to one javaScript Object
     // save in 'this.' to refernce in sending data
     this.daysStatic = JSON.parse(daysString)
   },

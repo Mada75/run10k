@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="getMaster()">get master data</button>
-    <div>get data:{{ retrievedData }}</div>
+    <div>Retrieved master data: {{retrievedData}}</div>
   </div>
 </template>
 <script>

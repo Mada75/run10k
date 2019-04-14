@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <div class="week-number">week one</div>
+    <div class="week-number">{{weekNo}}</div>
     <div v-for="day in week" :key="day.dayId" class="weekdays">
-      <day-view :day="day" class="day" />
+      <day-view :day="day" class="day"/>
     </div>
   </div>
 </template>
@@ -13,6 +13,10 @@ export default {
     DayView
   },
   props: {
+    weekNo: {
+      type: String,
+      required: true
+    },
     week: {
       type: Array,
       required: true
@@ -27,7 +31,7 @@ export default {
   color: #000000;
   display: flex;
   flex-direction: row;
-  min-height: 300px;
+  min-height: 200px;
   background: rgba($medium, 0.1);
   margin: 1rem;
   &:hover {

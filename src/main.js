@@ -3,6 +3,12 @@ import App from './App.vue'
 import router from './router'
 import { store } from './store'
 
+// import vue-firestore()
+import VueFirestore from 'vue-firestore'
+
+//use firestore()
+Vue.use(VueFirestore)
+
 // Import Firebase configuration
 const fb = require('./firebaseConfig.js')
 // Import scss files
@@ -28,9 +34,3 @@ fb.auth.onAuthStateChanged(user => {
     })
   }
 })
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')

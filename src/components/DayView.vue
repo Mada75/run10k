@@ -2,22 +2,42 @@
   <div>
     <div class="test">
       <div class="day-day">{{ day.day }}</div>
-      <div class="day-details">
-        <div class="day-type">{{ day.type }}</div>
+      <!--       <div class="day-details">
+      -->
+      <div class="day-type">{{ day.type }}</div>
+      <div class="day-body">
         <div class="day-activity">{{ day.activity }}</div>
-        <div>Comment: {{ day.comment }}</div>
       </div>
-      <div>Complete: {{ day.complete }}</div>
+      <div v-if="day.comment">
+        <user-comment :day="day"/>
+      </div>
+      <!--         <div>Comment: {{ day.comment }}</div>
+      -->
+      <!--       </div>
+      -->
+      <!--       <div>Complete: {{ day.complete }}</div>
+      -->
     </div>
   </div>
 </template>
 <script>
+import { currentUser } from '../firebaseConfig.js'
+
+import UserComment from '@/components/data/UserComment.vue'
+import UserComplete from '@/components/data/UserComplete.vue'
 export default {
   props: {
     day: {
       type: Object,
       required: true
     }
+  },
+  data() {
+    return {}
+  },
+  components: {
+    UserComment,
+    UserComplete
   }
 }
 </script>
@@ -34,6 +54,10 @@ export default {
   background: rgba($medium, 0.3);
   text-align: center;
 }
+.day-body {
+  height: 100%;
+  padding-top: 1rem;
+}
 .day-details {
   display: flex;
   flex-direction: column;
@@ -46,6 +70,7 @@ export default {
   font-variant-caps: all-small-caps;
   font-weight: bold;
   font-size: 1.2rem;
+  padding-top: 1rem;
 }
 .day-activity {
   line-height: 1.4rem;

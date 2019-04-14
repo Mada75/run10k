@@ -5,19 +5,18 @@
         <a href="https://adp-cv.firebaseapp.com/" target="_blank">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/adp-cv.appspot.com/o/base%2Fadam-logo.jpg?alt=media&token=2aa71b01-e382-4c1e-b29f-184a44b73e3a"
-          />
+          >
         </a>
         <ul class="flex-container nav-items">
           <li>
             <router-link to="home" class="link">Home</router-link>
           </li>
-          <li v-if="!currentUser">
-            <router-link to="login" class="link">Sign Up</router-link>
+          <li>
+            <router-link to="test" class="link">Test</router-link>
           </li>
           <li v-if="!currentUser">
             <router-link to="login" class="link">Login</router-link>
           </li>
-
           <li v-if="currentUser">
             <router-link to="dashboard" class="link">Dashboard</router-link>
           </li>
@@ -78,6 +77,10 @@ export default {
 .nav-items li {
   margin: 0 1rem;
   border: 5px solid transparent;
+    &:first-child {
+    text-align: left;
+  }
+
 }
 .nav img {
   height: 50px;
@@ -89,7 +92,7 @@ header {
   border-bottom: 1px solid black;
 }
 /* If the screen size is 601px wide or more */
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 743px) {
   .nav {
     height: 50px;
   }
@@ -101,7 +104,7 @@ header {
     flex: 1 1 100px;
   }
 } /* If the screen size is 600px wide or less */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 742px) {
   .nav {
     height: fit-content;
   }

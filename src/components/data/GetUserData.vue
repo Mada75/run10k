@@ -1,18 +1,22 @@
 <template>
   <div>
-<!--     <button @click="getUserData()">get user plan from vuex</button>
- -->    <user-calendar/>
+    <button @click="getUserData()">get user plan from vuex</button>
+    <div>comment:{{dayComment}}
+    </div>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 
-import { currentUser } from '../firebaseConfig.js'
-import UserCalendar from '@/components/UserCalendar.vue'
+import { currentUser, db } from '../../firebaseConfig.js'
 
 export default {
-  components: {
-    UserCalendar
+  props: {
+    dayComment: {
+      type: String,
+      required: false,
+      default: 'im a comment'
+    },
   },
   // https://vuex.vuejs.org/guide/state.html
   data() {
@@ -22,6 +26,23 @@ export default {
   },
   computed: {
     ...mapState(['currentUser']),
+    comment() {
+      let self = this
+      let count = 'adamamda'
+      let colRef = db
+        .collection('users')
+        .doc(this.currentUser.uid)
+        .collection('10k')
+        .doc('01')
+        .onSnapshot(function(doc) {
+          console.log('Current data: ', doc.data())
+          this.count = doc.data()
+          console.log(this.count.comment)
+          self.test = this.count.comment
+        })
+      //   this.test=   this.count.comment
+    },
+
     // get userPlan
     userStateData() {
       return this.$store.state.userPlan

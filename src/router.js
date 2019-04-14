@@ -9,6 +9,7 @@ import Dashboard from '@/views/Dashboard'
 import MyPlan from '@/views/MyPlan'
 import Settings from '@/views/Settings'
 import Error404 from '@/views/Error404.vue'
+import Test from '@/views/Test.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test
     },
     {
       path: '/dashboard',
@@ -62,18 +68,13 @@ const router = new Router({
     }
   ]
 })
+
 /*
-Step 6: Set up the
-beforeEach
-navigation guard.
+Step 6: Set up the 'beforeEach' navigation guard.
 Check if the route exists and requires authentication. Then create a reference to the current user and authenticate routes.
-If the route has the
-requiresAuth
-meta property set to true and the user is not logged in, redirect them to the log-in view. If the route has the
-requiresAuth
-meta property set to true and and the user is logged in, send them to whatever route they are trying to visit. For
-else
-, you just send them to whatever route they are trying to visit; this only fires if the route doesn't require authentication.
+If the route has the 'requiresAuth' meta property set to true and the user is not logged in, redirect them to the home view. 
+If the route has the 'requiresAuth' meta property set to true and and the user is logged in, send them to whatever route they are trying to visit.
+For else, you just send them to whatever route they are trying to visit; this only fires if the route doesn't require authentication.
 */
 
 router.beforeEach((to, from, next) => {

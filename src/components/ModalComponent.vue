@@ -96,7 +96,7 @@ a:hover {
 }
 
 /* If the screen size is 601px wide or more */
-@media screen and (min-width: 601px) {
+@media screen and (min-width:743px) {
   .modal-mask {
     height: 100%;
   }
@@ -115,7 +115,7 @@ a:hover {
   }
 }
 /* If the screen size is 600px wide or less */
-@media screen and (max-width: 600px) {
+@media screen and (max-width:742px) {
   .modal-mask {
     // height: 100%; trying vh to get around mobile scroll
     min-height: 100vh;

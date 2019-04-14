@@ -4,7 +4,7 @@
       <h1 class="heading-title">{{ heading }}</h1>
       <div class="sub-heading">{{ subHeading }}</div>
     </div>
-    <img :src="image.location" :alt="image.alt" :title="image.title" />
+    <img :src="image.location" :alt="image.alt" :title="image.title">
     <div class="plan">
       <h2 class="plan-title">{{ planTitle }}</h2>
       <p class="sub-heading">
@@ -35,21 +35,34 @@
       app-modal only renders when activity.modal = true
     -->
     <div>
-      <modal-slot :activity="strides" />
-      <modal-slot :activity="intervals" />
-      <modal-slot :activity="fartlek" />
-      <modal-slot :activity="tempo" />
-      <modal-slot :activity="speedwork" />
+      <modal-slot :activity="strides"/>
+      <modal-slot :activity="intervals"/>
+      <modal-slot :activity="fartlek"/>
+      <modal-slot :activity="tempo"/>
+      <modal-slot :activity="speedwork"/>
     </div>
-    <home-calendar />
+    <home-calendar/>
   </section>
 </template>
 
 <script>
 import ModalSlot from '@/components/ModalSlot'
 import HomeCalendar from '@/components/HomeCalendar'
+import SetMasterData from '@/components/data/SetMasterData'
+import GetMasterData from '@/components/data/GetMasterData'
+import GetUserData from '@/components/data/GetUserData'
+import SetUserData from '@/components/data/SetUserData'
+import SetUserComment from '@/components/data/SetUserComment'
 export default {
-  components: { ModalSlot, HomeCalendar },
+  components: {
+    ModalSlot,
+    HomeCalendar,
+    SetMasterData,
+    GetMasterData,
+    SetUserData,
+    GetUserData,
+    SetUserComment
+  },
   data() {
     return {
       heading: '10k training plan',
@@ -124,7 +137,7 @@ img {
   line-height: 1.2;
 }
 /* If the screen size is 601px wide or more */
-@media screen and (min-width: 601px) {
+@media screen and (min-width:743px) {
   .heading {
     padding: 4rem;
   }
@@ -142,7 +155,7 @@ img {
   }
 }
 /* If the screen size is 600px wide or less */
-@media screen and (max-width: 600px) {
+@media screen and (max-width:742px) {
   .heading {
     padding: 1rem;
   }

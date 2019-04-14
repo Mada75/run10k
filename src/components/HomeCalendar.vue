@@ -1,54 +1,32 @@
 <template>
   <div>
-    <div v-show="requesting" class="show">dsaaaaaaaaaaaaaaaaaaaaaa</div>
-    <week-view :week="weekOne" />
-    <week-view :week="weekOne" />
+    <week-view :week="weekOne" :weekNo="'week 1'"/>
+    <week-view :week="weekTwo" :weekNo="'week 2'"/>
+    <week-view :week="weekThree" :weekNo="'week 3'"/>
+    <week-view :week="weekFour" :weekNo="'week 4'"/>
+    <week-view :week="weekFive" :weekNo="'week 5'"/>
+    <week-view :week="weekSix" :weekNo="'week 6'"/>
+    <week-view :week="weekSeven" :weekNo="'week 7'"/>
+    <week-view :week="weekEight" :weekNo="'week 8'"/>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
 import WeekView from '@/components/WeekView.vue'
+import { weekOne, weekTwo, weekThree, weekFour, weekFive, weekSix, weekSeven, weekEight } from './data/weekClass'
 
 export default {
   components: {
     WeekView
   },
-  data() {
-    return {
-      masterPlan: ''
-    }
-  },
   created() {
-    // created methods firing twice.....
-
-    // fire increment first to use in if/else statement for getMaster
-    this.$store.dispatch('limitCreated')
-
-    // sets request to true
-    this.$store.dispatch('performingRequest')
-
-    // get weekOne
-    this.$store.dispatch('getMaster')
-  },
-  mounted() {
-    this.performingRequest = false
-  },
-  computed: {
-    weekOne() {
-      return this.$store.state.master
-    },
-    requesting() {
-      return this.$store.state.performingRequest
-    },
-    // receive userProfile, currentUser from vuex store
-    ...mapState(['userProfile', 'currentUser'])
+    this.weekOne = weekOne
+    this.weekTwo = weekTwo
+    this.weekThree = weekThree
+    this.weekFour = weekFour
+    this.weekFive = weekFive
+    this.weekSix = weekSix
+    this.weekSeven = weekSeven
+    this.weekEight = weekEight
   }
 }
 </script>
-<style lang="scss" scoped>
-.show {
-  height: 500px;
-  width: 500px;
-  background: pink;
-}
-</style>

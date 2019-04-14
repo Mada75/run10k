@@ -73,6 +73,16 @@ a {
 }
 
 // globals
+.col1,
+.col2 {
+	flex-grow: 1;
+	flex-basis: 0;
+	padding: 1rem;
+
+	@media screen and (max-width:742px) {
+
+	}
+}
 [v-cloak] {
   display: none;
 }
@@ -157,6 +167,17 @@ ul {
 .text-center {
   text-align: center;
 }
+
+.inline {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		display: inline-block;
+	}
+}
+
 
 .clear {
   clear: both;

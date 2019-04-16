@@ -1,7 +1,8 @@
 <template>
   <div>
     <div>
-      <set-user-data />
+      <set-master-data/>
+      <set-user-data/>
       <add-document/>
       <read-document/>
       <set-document/>
@@ -31,8 +32,10 @@ import getData from '@/components/firestore/getData'
 import realtimeUpdates from '@/components/firestore/realtimeUpdates'
 import vueFirestore from '@/components/firestore/vueFirestore'
 import SetUserData from '@/components/data/SetUserData'
+import SetMasterData from '@/components/data/SetMasterData.vue'
 export default {
   components: {
+    SetMasterData,
     addDocument,
     readDocument,
     setDocument,
@@ -47,7 +50,6 @@ export default {
     vueFirestore,
     SetUserData
   },
-  methods: {}
 }
 </script>
 

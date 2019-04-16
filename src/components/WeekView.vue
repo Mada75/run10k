@@ -1,8 +1,17 @@
 <template>
   <div class="wrapper">
+    <button @click="showRest =!showRest">show</button>
     <div class="week-number">{{weekNo}}</div>
-    <div v-for="day in week" :key="day.dayId" class="weekdays">
+    <div v-if="showRest" class="wrapper">
+      <div v-for="day in userWeek" :key="day.dayId" class="weekdays">
+        <day-view :day="day" class="day"/>
+      </div>
+    </div>
+    <div v-else class="wrapper">
+    <div v-for="day in userWeek" :key="day.dayId" class="weekdays" v-show="day.type!='rest'">
       <day-view :day="day" class="day"/>
+    </div>
+
     </div>
   </div>
 </template>
@@ -21,10 +30,26 @@ export default {
       type: Array,
       required: true
     }
+  },
+  data() {
+    return {
+      showRest: false
+    }
+  },
+  computed: {
+    userWeek() {
+      return this.week
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
+.rest-day {
+  border: 2px solid green;
+  background: greenyellow;
+  display: none !important;
+}
+
 @import 'src/assets/scss/_global.scss';
 
 .wrapper {
@@ -39,7 +64,7 @@ export default {
   }
 }
 .week-number {
-  flex: 0 10%;
+  flex: 0 0 5%;
   align-self: center;
   text-align: center;
   text-transform: uppercase;
@@ -50,7 +75,7 @@ export default {
   flex-direction: row;
   flex: 1 1 20%;
   padding: 10px 4px;
-  // border: 2px solid yellow;
+  border: 2px solid yellow;
 }
 .day {
   display: flex;

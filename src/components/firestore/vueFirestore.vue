@@ -4,6 +4,13 @@
       href="https://github.com/gdg-tangier/vue-firestore"
     >https://github.com/gdg-tangier/vue-firestore</a>
     <div>
+      heroes:
+      {{heroes}}
+      {{weekOne}}
+      <button @click="marvelHeroes(weekOne)">filet</button>
+      {{result}}
+    </div>
+    <div>
       <input type="text" v-model="newReptile" @keyup.enter="addReptile">
       <button @click="addReptile">Add Reptile</button>
     </div>
@@ -18,6 +25,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import { db, fs } from '@/firebaseConfig.js'
 
 export default {
@@ -25,7 +34,17 @@ export default {
     return {
       reptiles: [],
       collectionRef: '******************************',
-      newReptile: ''
+      newReptile: '',
+      currentUserPlan: [],
+      message: 'im a atest',
+      numbers: [1, 3, 6, 8, 11],
+      heroes: [
+        { name: '“Batman”', franchise: '“DC”' },
+        { name: '“Ironman”', franchise: '“Marvel”' },
+        { name: '“Thor”', franchise: '“Marvel”' },
+        { name: '“Superman”', franchise: '“DC”' }
+      ],
+      result: []
     }
   },
   firestore() {
@@ -60,10 +79,48 @@ export default {
       // Collection shorthand
       collectionRef: db.collection('data').doc('one'),
       // Document shorthand
-      reptiles: db.collection('reptiles')
+      reptiles: db.collection('reptiles'),
+      currentUserPlan: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      }
+    }
+  },
+  computed: {
+    // receive userProfile, currentUser from vuex store
+    ...mapState(['currentUser']),
+    weekOne() {
+      return this.currentUserPlan.slice(0, 7)
     }
   },
   methods: {
+    marvelHeroes(week) {
+      /* var heroes = [
+        { name: '“Batman”', franchise: '“DC”' },
+        { name: '“Ironman”', franchise: '“Marvel”' },
+        { name: '“Thor”', franchise: '“Marvel”' },
+        { name: '“Superman”', franchise: '“DC”' }
+      ] */
+      var filtered = []
+      for (var i = 0; i < week.length; i++) {
+        if (week[i].type != 'rest') {
+          filtered.push(week[i])
+        }
+      }
+      console.log(filtered)
+    },
     addReptile() {
       let self = this
       this.$firestore.reptiles

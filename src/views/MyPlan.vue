@@ -1,64 +1,18 @@
 <template>
   <div>
-<!--     <button @click="getUserData()">get user plan from vuex</button>
- -->    <user-calendar/>
+    <user-calendar/>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
-
-import { currentUser } from '../firebaseConfig.js'
 import UserCalendar from '@/components/UserCalendar.vue'
 
 export default {
   components: {
     UserCalendar
   },
-  // https://vuex.vuejs.org/guide/state.html
-  data() {
-    return {
-      test: 'coments here...'
-    }
-  },
   computed: {
-    ...mapState(['currentUser']),
-    // get userPlan
-    userStateData() {
-      return this.$store.state.userPlan
-    },
-    userGetterData() {
-      return this.$store.getters.getUserPlan
-    },
-    weekOne() {
-      return this.$store.getters.weekOne
-    },
-    weekTwo() {
-      return this.$store.getters.weekTwo
-    },
-    weekThree() {
-      return this.$store.getters.weekThree
-    },
-    weekFour() {
-      return this.$store.getters.weekFour
-    },
-    weekFive() {
-      return this.$store.getters.weekFive
-    },
-    weekSix() {
-      return this.$store.getters.weekSix
-    },
-    weekSeven() {
-      return this.$store.getters.weekSeven
-    },
-    weekEight() {
-      return this.$store.getters.weekEight
-    }
-  },
-  methods: {
-    // fire get 'userPlan', pass user uid
-    getUserData() {
-      this.$store.dispatch('userPlan', this.currentUser.uid)
-    }
+    ...mapState(['currentUser'])
   }
 }
 </script>

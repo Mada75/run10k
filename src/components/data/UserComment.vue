@@ -1,16 +1,16 @@
 <template>
   <div>
     <div>
+      <div v-if="day.comment">{{day.comment}}</div>
       <input type="text" placeholder="enter comment" v-model="day.comment">
-      {{day.comment}}
-      <button @click="setComment(day.dayId)">set</button>
+      <button @click="setComment(day.dayId)">save comment</button>
     </div>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 
-import { currentUser, db } from '../../firebaseConfig.js'
+import { db } from '../../firebaseConfig.js'
 
 export default {
   props: {
@@ -19,69 +19,17 @@ export default {
       required: true
     }
   },
-  // https://vuex.vuejs.org/guide/state.html
-  data() {
-    return {
-      test: 'coments here...'
-    }
-  },
   computed: {
-    ...mapState(['currentUser']),
-    watching() {
-      let colRef = db
-        .collection('users')
-        .doc(this.currentUser.uid)
-        .collection('10k')
-        .doc('14')
-        .onSnapshot(function(doc) {
-          var source = doc.metadata.hasPendingWrites ? 'Local' : 'Server'
-          console.log(source, ' data: ', doc.data())
-        })
-    },
-    // get userPlan
-    userStateData() {
-      return this.$store.state.userPlan
-    },
-    userGetterData() {
-      return this.$store.getters.getUserPlan
-    },
-    weekOne() {
-      return this.$store.getters.weekOne
-    },
-    weekTwo() {
-      return this.$store.getters.weekTwo
-    },
-    weekThree() {
-      return this.$store.getters.weekThree
-    },
-    weekFour() {
-      return this.$store.getters.weekFour
-    },
-    weekFive() {
-      return this.$store.getters.weekFive
-    },
-    weekSix() {
-      return this.$store.getters.weekSix
-    },
-    weekSeven() {
-      return this.$store.getters.weekSeven
-    },
-    weekEight() {
-      return this.$store.getters.weekEight
-    }
+    ...mapState(['currentUser'])
   },
   methods: {
-    // fire get 'userPlan', pass user uid
-    getUserData() {
-      this.$store.dispatch('userPlan', this.currentUser.uid)
-    },
     setComment(dayId) {
       let colRef = db
         .collection('users')
         .doc(this.currentUser.uid)
         .collection('10k')
         .doc(dayId)
-        .update({ comment: ' man true' })
+        .update({ comment: this.day.comment })
       console.log('Current data: ', new Date())
       //     self.test = this.count.comment
 
@@ -92,7 +40,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.flex {
-  display: flex;
-}
 </style>

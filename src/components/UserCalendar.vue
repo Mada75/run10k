@@ -1,61 +1,201 @@
 <template>
   <div>
-    <week-view :week="weekOne" :weekNo="'week 1'"/>
-    <week-view :week="weekTwo" :weekNo="'week 2'"/>
-    <week-view :week="weekThree" :weekNo="'week 3'"/>
-    <week-view :week="weekFour" :weekNo="'week 4'"/>
-    <week-view :week="weekFive" :weekNo="'week 5'"/>
-    <week-view :week="weekSix" :weekNo="'week 6'"/>
-    <week-view :week="weekSeven" :weekNo="'week 7'"/>
-    <week-view :week="weekEight" :weekNo="'week 8'"/>
-<!--     <set-master-data/>
-    <get-master-data/>
- -->  </div>
+    <week-view :week="currentUserPlanWeekOne" :weekNo="'week 1'"/>
+    <week-view :week="currentUserPlanWeekTwo" :weekNo="'week 2'"/>
+    <week-view :week="currentUserPlanWeekThree" :weekNo="'week 3'"/>
+    <week-view :week="currentUserPlanWeekFour" :weekNo="'week 4'"/>
+    <week-view :week="currentUserPlanWeekFive" :weekNo="'week 5'"/>
+    <week-view :week="currentUserPlanWeekSix" :weekNo="'week 6'"/>
+    <week-view :week="currentUserPlanWeekSeven" :weekNo="'week 7'"/>
+    <week-view :week="currentUserPlanWeekEight" :weekNo="'week 8'"/>
+  </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 const fb = require('../firebaseConfig.js')
 import WeekView from '@/components/WeekView.vue'
 import { db, currentUser } from '../firebaseConfig.js'
-import SetMasterData from '@/components/data/SetMasterData.vue'
-import GetMasterData from '@/components/data/GetMasterData.vue'
+import { weekOne } from './data/weekClass'
 
 export default {
-  components: { SetMasterData, GetMasterData, WeekView },
-  data() {
-    return {}
-  },
-  created() {
-    this.$store.dispatch('userPlan', this.currentUser.uid)
-  },
+  components: { WeekView },
   computed: {
     // receive userProfile, currentUser from vuex store
     ...mapState(['userProfile', 'currentUser']),
+
     weekOne() {
-      return this.$store.getters.weekOne
+      return this.currentUserPlan.slice(0, 7)
     },
     weekTwo() {
-      return this.$store.getters.weekTwo
+      return this.currentUserPlan.slice(7, 14)
     },
     weekThree() {
-      return this.$store.getters.weekThree
+      return this.currentUserPlan.slice(14, 21)
     },
     weekFour() {
-      return this.$store.getters.weekFour
+      return this.currentUserPlan.slice(21, 28)
     },
     weekFive() {
-      return this.$store.getters.weekFive
+      return this.currentUserPlan.slice(28, 35)
     },
     weekSix() {
-      return this.$store.getters.weekSix
+      return this.currentUserPlan.slice(35, 42)
     },
     weekSeven() {
-      return this.$store.getters.weekSeven
+      return this.currentUserPlan.slice(42, 49)
     },
     weekEight() {
-      return this.$store.getters.weekEight
+      return this.currentUserPlan.slice(49, 56)
     }
   },
-  methods: {}
+  firestore() {
+    return {
+      // Collection binding
+      currentUserPlanWeekOne: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '01')
+          .where('dayId', '<=', '07'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekTwo: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '08')
+          .where('dayId', '<=', '14'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekThree: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '15')
+          .where('dayId', '<=', '21'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekFour: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '22')
+          .where('dayId', '<=', '28'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekFive: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '29')
+          .where('dayId', '<=', '35'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekSix: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '36')
+          .where('dayId', '<=', '42'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekSeven: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '43')
+          .where('dayId', '<=', '49'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      },
+      currentUserPlanWeekEight: {
+        ref: db
+          .collection('users')
+          .doc(this.currentUser.uid)
+          .collection('10k')
+          .where('dayId', '>=', '50')
+          .where('dayId', '<=', '56'),
+        // Bind the collection as an object(true) or an Array(false)
+        objects: false,
+        resolve: data => {
+          console.log('Collection Reference => ', data)
+          // collection is resolved
+        },
+        reject: err => {
+          // collection is rejected
+          console.log('Collection Error => ', err)
+        }
+      }
+    }
+  }
 }
 </script>

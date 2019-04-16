@@ -30,44 +30,10 @@ export const store = new Vuex.Store({
     userProfile: {},
     homeCalendar: [],
     master: [],
-    performingRequest: false,
-    userPlan: []
+    performingRequest: false
   },
-  getters: {
-    getUserPlan: state => {
-      return state.userPlan
-    },
-    weekOne: state => {
-      return state.userPlan.slice(0, 7)
-    },
-    weekTwo: state => {
-      return state.userPlan.slice(7, 14)
-    },
-    weekThree: state => {
-      return state.userPlan.slice(14, 21)
-    },
-    weekFour: state => {
-      return state.userPlan.slice(21, 28)
-    },
-    weekFive: state => {
-      return state.userPlan.slice(28, 35)
-    },
-    weekSix: state => {
-      return state.userPlan.slice(35, 42)
-    },
-    weekSeven: state => {
-      return state.userPlan.slice(42, 49)
-    },
-    weekEight: state => {
-      return state.userPlan.slice(49, 56)
-    }
-  },
+  getters: {},
   mutations: {
-    // sets 'userPlan' to 'userWeeks' array
-    setUserPlan(state, userWeeks) {
-      state.userPlan = userWeeks
-      console.log('got it!')
-    },
     setCurrentUser(state, val) {
       state.currentUser = val
     },
@@ -95,28 +61,6 @@ export const store = new Vuex.Store({
 
   // https://vuex.vuejs.org/guide/actions.html
   actions: {
-    // get user plan
-    userPlan(context, uid) {
-      console.log('getting user data')
-      // create empty to store day objects
-      let userWeeks = []
-      db.collection('users')
-        .doc(uid)
-        .collection('10k')
-        .orderBy('dayId', 'asc')
-        .get()
-        .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            // push each doc into 'userWeeks' Array
-            userWeeks.push(doc.data())
-          })
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
-      // fire 'setUserPlan' pass in 'userWeeks' array
-      store.commit('setUserPlan', userWeeks)
-    },
     getMaster({ commit, state }) {
       if (state.created === 1) {
         db.collection('10k-master')

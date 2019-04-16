@@ -1,28 +1,19 @@
 <template>
-  <div>
-    <div class="test">
-      <div class="day-day">{{ day.day }}</div>
-      <!--       <div class="day-details">
-      -->
-      <div class="day-type">{{ day.type }}</div>
-      <div class="day-body">
-        <div class="day-activity">{{ day.activity }}</div>
-      </div>
-      <div v-if="day.comment">
-        <user-comment :day="day"/>
-      </div>
-      <!--         <div>Comment: {{ day.comment }}</div>
-      -->
-      <!--       </div>
-      -->
-      <!--       <div>Complete: {{ day.complete }}</div>
-      -->
+  <div class="day-view">
+    <div class="day-day">{{ day.day }}</div>
+    <div class="day-type">{{ day.type }}</div>
+    <div class="day-body">
+      <div class="day-activity">{{ day.activity }}</div>
+    </div>
+    <div v-if="$route.path==='/myplan'">
+      <user-comment :day="day"/>
+      <user-complete :day="day"/>
     </div>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import { currentUser } from '../firebaseConfig.js'
-
 import UserComment from '@/components/data/UserComment.vue'
 import UserComplete from '@/components/data/UserComplete.vue'
 export default {
@@ -32,9 +23,6 @@ export default {
       required: true
     }
   },
-  data() {
-    return {}
-  },
   components: {
     UserComment,
     UserComplete
@@ -43,8 +31,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import 'src/assets/scss/_global.scss';
-
-.test {
+.day-view {
   padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;

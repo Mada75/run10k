@@ -1,8 +1,6 @@
 <template>
   <div>
-    <button @click="getUserData()">get user plan from vuex</button>
-    <div>comment:{{dayComment}}
-    </div>
+    <div>comment:{{dayComment}}</div>
   </div>
 </template>
 <script>
@@ -16,7 +14,7 @@ export default {
       type: String,
       required: false,
       default: 'im a comment'
-    },
+    }
   },
   // https://vuex.vuejs.org/guide/state.html
   data() {
@@ -41,51 +39,10 @@ export default {
           self.test = this.count.comment
         })
       //   this.test=   this.count.comment
-    },
-
-    // get userPlan
-    userStateData() {
-      return this.$store.state.userPlan
-    },
-    userGetterData() {
-      return this.$store.getters.getUserPlan
-    },
-    weekOne() {
-      return this.$store.getters.weekOne
-    },
-    weekTwo() {
-      return this.$store.getters.weekTwo
-    },
-    weekThree() {
-      return this.$store.getters.weekThree
-    },
-    weekFour() {
-      return this.$store.getters.weekFour
-    },
-    weekFive() {
-      return this.$store.getters.weekFive
-    },
-    weekSix() {
-      return this.$store.getters.weekSix
-    },
-    weekSeven() {
-      return this.$store.getters.weekSeven
-    },
-    weekEight() {
-      return this.$store.getters.weekEight
-    }
-  },
-  methods: {
-    // fire get 'userPlan', pass user uid
-    getUserData() {
-      this.$store.dispatch('userPlan', this.currentUser.uid)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.flex {
-  display: flex;
-}
 </style>

@@ -1,9 +1,22 @@
 <template>
   <div>
     <div>
-      <div>{{day.complete}}</div>
-      <button @click="setComplete(day.dayId)" v-if="!day.complete">set complete</button>
-      <button @click="setInComplete(day.dayId)" v-else>set incomplete</button>
+      <fa-icon
+        :icon="myIcon"
+        @click="setInComplete(day.dayId)"
+        v-if="day.complete == true"
+        class="icon"
+        title="Reset today"
+        @mouseover="myIcon = 'redo'"
+        @mouseout="myIcon = 'running'"
+      />
+      <fa-icon
+        icon="check"
+        @click="setComplete(day.dayId)"
+        v-else
+        title="Complete today"
+        class="icon"
+      />
     </div>
   </div>
 </template>
@@ -19,31 +32,67 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      myIcon: 'running'
+    }
+  },
   computed: {
     ...mapState(['currentUser'])
   },
   methods: {
     setComplete(dayId) {
-      let colRef = db
-        .collection('users')
+      let self = this
+      db.collection('users')
         .doc(this.currentUser.uid)
         .collection('10k')
         .doc(dayId)
         .update({ complete: true })
-      console.log('Complete day: ', dayId)
+        .then(function() {
+          console.log('Complete day: ', dayId)
+          self.dayComplete = true
+        })
+        .catch(function(error) {
+          // The document probably doesn't exist.
+          console.error('Error updating document: ', error)
+        })
     },
     setInComplete(dayId) {
-      let colRef = db
-        .collection('users')
+      db.collection('users')
         .doc(this.currentUser.uid)
         .collection('10k')
         .doc(dayId)
         .update({ complete: false })
-      console.log('Incomplete day: ', dayId)
+        .then(function() {
+          console.log('Incomplete day: ', dayId)
+          self.dayComplete = false
+        })
+        .catch(function(error) {
+          // The document probably doesn't exist.
+          console.error('Error updating document: ', error)
+        })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import 'src/assets/scss/_global.scss';
+
+.icon {
+  width: 100%;
+  cursor: pointer;
+  color: #00008b;
+  flex: 0 1 50%;
+  transition: all 100ms ease;
+
+  &:hover {
+    color: $primary;
+  }
+}
+.active {
+  // background: green;
+}
+.nope {
+}
 </style>

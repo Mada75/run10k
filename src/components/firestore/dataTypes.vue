@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a
-      href="https://firebase.google.com/docs/firestore/manage-data/add-data"
-    >https://firebase.google.com/docs/firestore/manage-data/add-data</a>
+    <a href="https://firebase.google.com/docs/firestore/manage-data/add-data"
+      >https://firebase.google.com/docs/firestore/manage-data/add-data</a
+    >
     <div>
       <button @click="setTypes()">Set different data types</button>
     </div>

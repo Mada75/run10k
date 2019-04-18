@@ -2,7 +2,8 @@
   <div>
     <a
       href="https://firebase.google.com/docs/firestore/manage-data/transactions"
-    >https://firebase.google.com/docs/firestore/manage-data/transactions</a>
+      >https://firebase.google.com/docs/firestore/manage-data/transactions</a
+    >
     <div>
       <button @click="writeBatch()">Write Batch</button>
     </div>

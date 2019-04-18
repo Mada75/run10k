@@ -16,12 +16,20 @@
           Vue.js
         </p>
       </div>
-      <div class="col2" :class="{ 'signup-form': !showLoginForm && !showForgotPassword }">
+      <div
+        class="col2"
+        :class="{ 'signup-form': !showLoginForm && !showForgotPassword }"
+      >
         <form v-if="showLoginForm" @submit.prevent>
           <h1>Welcome Back</h1>
 
           <label for="email1">Email</label>
-          <input v-model.trim="loginForm.email" type="text" placeholder="you@email.com" id="email1">
+          <input
+            v-model.trim="loginForm.email"
+            type="text"
+            placeholder="you@email.com"
+            id="email1"
+          />
 
           <label for="password1">Password</label>
           <input
@@ -29,7 +37,7 @@
             type="password"
             placeholder="******"
             id="password1"
-          >
+          />
 
           <button @click="login" class="button">Log In</button>
 
@@ -42,10 +50,20 @@
           <h1>Get Started</h1>
 
           <label for="name">Name</label>
-          <input v-model.trim="signupForm.name" type="text" placeholder="Savvy Apps" id="name">
+          <input
+            v-model.trim="signupForm.name"
+            type="text"
+            placeholder="Savvy Apps"
+            id="name"
+          />
 
           <label for="title">Title</label>
-          <input v-model.trim="signupForm.title" type="text" placeholder="Company" id="title">
+          <input
+            v-model.trim="signupForm.title"
+            type="text"
+            placeholder="Company"
+            id="title"
+          />
 
           <label for="email2">Email</label>
           <input
@@ -53,7 +71,7 @@
             type="text"
             placeholder="you@email.com"
             id="email2"
-          >
+          />
 
           <label for="password2">Password</label>
           <input
@@ -61,7 +79,7 @@
             type="password"
             placeholder="min 6 characters"
             id="password2"
-          >
+          />
 
           <button @click="signup" class="button">Sign Up</button>
 
@@ -80,7 +98,7 @@
               type="text"
               placeholder="you@email.com"
               id="email3"
-            >
+            />
 
             <button @click="resetPassword" class="button">Submit</button>
 
@@ -91,7 +109,9 @@
           <div v-else>
             <h1>Email Sent</h1>
             <p>check your email for a link to reset your password</p>
-            <button @click="togglePasswordReset" class="button">Back to login</button>
+            <button @click="togglePasswordReset" class="button">
+              Back to login
+            </button>
           </div>
         </form>
         <transition name="fade">
@@ -107,7 +127,7 @@
 <script>
 import { mapState } from 'vuex'
 
-import { db, fs } from '@/firebaseConfig.js'
+import { db } from '@/firebaseConfig.js'
 import {
   weekOne,
   weekTwo,
@@ -182,6 +202,22 @@ export default {
         this.showForgotPassword = true
       }
     },
+    resetPassword() {
+      this.performingRequest = true
+      fb.auth
+        .sendPasswordResetEmail(this.passwordForm.email)
+        .then(() => {
+          this.performingRequest = false
+          this.passwordResetSuccess = true
+          this.passwordForm.email = ''
+          this.errorMsg = ''
+        })
+        .catch(err => {
+          console.log(err)
+          this.performingRequest = false
+          this.errorMsg = err.message
+        })
+    },
     login() {
       this.performingRequest = true
       fb.auth
@@ -193,10 +229,10 @@ export default {
           this.$store.commit('setCurrentUser', res.user)
           this.$store.dispatch('fetchUserProfile')
           this.performingRequest = false
-          this.$router.push('/dashboard')
+          this.$router.push('/myplan#my-plan')
         })
         .catch(err => {
-          console.log(err)
+          console.log('error signing in => ', err)
           this.performingRequest = false
           this.errorMsg = err.message
         })
@@ -220,7 +256,7 @@ export default {
             .then(() => {
               this.$store.dispatch('fetchUserProfile')
               this.performingRequest = false
-              this.$router.push('/dashboard')
+              this.$router.push('/myplan#my-plan')
               this.setUserData()
             })
             .catch(err => {
@@ -267,29 +303,13 @@ export default {
       return batch
         .commit()
         .then(data => {
-          console.log('good')
-          console.log('adam')
+          console.log(data)
         })
         .catch(error => {
           console.log(error, 'there is an error')
         })
 
       // this.newReptile = ''
-    },
-    resetPassword() {
-      this.performingRequest = true
-      fb.auth
-        .sendPasswordResetEmail(this.passwordForm.email)
-        .then(() => {
-          this.performingRequest = false
-          this.passwordResetSuccess = true
-          this.passwordForm.email = ''
-        })
-        .catch(err => {
-          console.log(err)
-          this.performingRequest = false
-          this.errorMsg = err.message
-        })
     }
   }
 }

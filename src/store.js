@@ -30,7 +30,9 @@ export const store = new Vuex.Store({
     userProfile: {},
     homeCalendar: [],
     master: [],
-    performingRequest: false
+    performingRequest: false,
+    showRestDays: true,
+    showExtras: true
   },
   getters: {},
   mutations: {
@@ -56,6 +58,14 @@ export const store = new Vuex.Store({
     },
     stoppingReq(state) {
       state.performingRequest = false
+    },
+    toggleShowRestDays(state) {
+      console.log('rest days')
+      state.showRestDays = !state.showRestDays
+    },
+    toggleShowExtras(state) {
+      console.log('extras')
+      state.showExtras = !state.showExtras
     }
   },
 

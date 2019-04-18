@@ -1,15 +1,19 @@
 <template>
   <div>
-    <a href="https://github.com/gdg-tangier/vue-firestore">https://github.com/gdg-tangier/vue-firestore</a>
-    <a href="https://alligator.io/vuejs/vue-cloud-firestore/">https://alligator.io/vuejs/vue-cloud-firestore/</a>
+    <a href="https://github.com/gdg-tangier/vue-firestore"
+      >https://github.com/gdg-tangier/vue-firestore</a
+    >
+    <a href="https://alligator.io/vuejs/vue-cloud-firestore/"
+      >https://alligator.io/vuejs/vue-cloud-firestore/</a
+    >
     <div>
-      <input type="text" v-model="newReptile" @keyup.enter="addReptile">
-      <button @click="addReptile">Add Reptile</button>{{persons}}
-      {{users}}{{cities}}
+      <input type="text" v-model="newReptile" @keyup.enter="addReptile" />
+      <button @click="addReptile">Add Reptile</button>{{ persons }} {{ users
+      }}{{ cities }}
     </div>
     <ul class="reptileList">
       <li v-for="(reptile, index) in reptiles" :key="index">
-        {{reptile}}
+        {{ reptile }}
         {{ reptile.name }} -
         <button @click="deleteReptile(reptile)">Remove</button>
       </li>
@@ -18,7 +22,7 @@
 </template>
 
 <script>
-import { db, fs} from '@/firebaseConfig.js'
+import { db, fs } from '@/firebaseConfig.js'
 
 export default {
   name: 'app',
@@ -54,7 +58,7 @@ export default {
     addReptile() {
       this.$firestore.reptiles.add({
         name: this.newReptile,
-        timestamp: fs.FieldValue.serverTimestamp(),
+        timestamp: fs.FieldValue.serverTimestamp()
       })
       this.newReptile = ''
     },

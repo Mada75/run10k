@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <user-calendar/>
+  <div id="my-plan">
+    <user-calendar />
   </div>
 </template>
 <script>

@@ -1,20 +1,36 @@
 <template>
   <div>
+    <div id="app">
+      <div>
+        First Name:
+        <input
+          type="text"
+          ref="first_name"
+          :value="user.firstName"
+          :disabled="!isEditing"
+          :class="{ view: !isEditing }"
+        />
+      </div>
+      <button @click="isEditing = !isEditing" v-if="!isEditing">Edit</button>
+      <button @click="save" v-else-if="isEditing">Save</button>
+
+      <button v-if="isEditing" @click="isEditing = false">Cancel</button>
+    </div>
     <div>
-      <set-master-data/>
-      <set-user-data/>
-      <add-document/>
-      <read-document/>
-      <set-document/>
-      <data-types/>
-      <update-document/>
-      <timestamp-document/>
-      <read-write-transactions/>
-      <write-batch/>
-      <delete-data/>
-      <get-data/>
-      <realtime-updates/>
-      <vue-firestore/>
+      <set-master-data />
+      <set-user-data />
+      <add-document />
+      <read-document />
+      <set-document />
+      <data-types />
+      <update-document />
+      <timestamp-document />
+      <read-write-transactions />
+      <write-batch />
+      <delete-data />
+      <get-data />
+      <realtime-updates />
+      <vue-firestore />
     </div>
   </div>
 </template>
@@ -50,6 +66,22 @@ export default {
     vueFirestore,
     SetUserData
   },
+  data() {
+    return {
+      isEditing: false,
+      user: {
+        firstName: 'John',
+        lastName: 'Smith'
+      }
+    }
+  },
+  methods: {
+    save() {
+      this.user.firstName = this.$refs['first_name'].value
+      this.user.lastName = this.$refs['last_name'].value
+      this.isEditing = !this.isEditing
+    }
+  }
 }
 </script>
 

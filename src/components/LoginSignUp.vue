@@ -24,7 +24,7 @@
               type="text"
               placeholder="Enter a username"
               id="name"
-            >
+            />
 
             <label for="email2">Email</label>
             <input
@@ -32,7 +32,7 @@
               type="text"
               placeholder="you@email.com"
               id="email2"
-            >
+            />
 
             <label for="password2">Password</label>
             <input
@@ -40,7 +40,7 @@
               type="password"
               placeholder="min 6 characters"
               id="password2"
-            >
+            />
 
             <button @click="signup" class="button">Sign Up</button>
 
@@ -127,9 +127,9 @@ export default {
 @import 'src/assets/scss/_global.scss';
 
 /* If the screen size is 601px wide or more */
-@media screen and (min-width:743px) {
+@media screen and (min-width: 743px) {
 }
 /* If the screen size is 600px wide or less */
-@media screen and (max-width:742px) {
+@media screen and (max-width: 742px) {
 }
 </style>

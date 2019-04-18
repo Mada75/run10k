@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a
-      href="https://firebase.google.com/docs/firestore/quickstart"
-    >https://firebase.google.com/docs/firestore/quickstart</a>
+    <a href="https://firebase.google.com/docs/firestore/quickstart"
+      >https://firebase.google.com/docs/firestore/quickstart</a
+    >
     <div>
       <button @click="addDoc()">Add Document</button>
       <button @click="addSecondDoc()">Add second Document</button>

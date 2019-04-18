@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a
-      href="https://firebase.google.com/docs/firestore/query-data/get-data"
-    >https://firebase.google.com/docs/firestore/query-data/get-data</a>
+    <a href="https://firebase.google.com/docs/firestore/query-data/get-data"
+      >https://firebase.google.com/docs/firestore/query-data/get-data</a
+    >
     <div>
       <button @click="exampleData()">Set example data</button>
       <button @click="getData()">Get Data Document</button>

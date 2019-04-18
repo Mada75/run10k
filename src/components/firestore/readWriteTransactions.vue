@@ -2,10 +2,13 @@
   <div>
     <a
       href="https://firebase.google.com/docs/firestore/manage-data/transactions"
-    >https://firebase.google.com/docs/firestore/manage-data/transactions</a>
+      >https://firebase.google.com/docs/firestore/manage-data/transactions</a
+    >
     <div>
       <button @click="runTransaction()">Run Transaction</button>
-      <button @click="passingInfoOut()">Passing information out of the Transaction</button>
+      <button @click="passingInfoOut()">
+        Passing information out of the Transaction
+      </button>
       <p>Or on created()</p>
     </div>
   </div>

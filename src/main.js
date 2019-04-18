@@ -6,6 +6,39 @@ import { store } from './store'
 // import vue-firestore()
 import VueFirestore from 'vue-firestore'
 
+// import fontawesome https://fontawesome.com/how-to-use/on-the-web/using-with/vuejs
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faCoffee,
+  faUserSecret,
+  faComment,
+  faCheck,
+  faTimes,
+  faRedo,
+  faRunning,
+  faShoePrints,
+  faHome,
+  faUsersCog,
+  faSignOutAlt
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(
+  faCoffee,
+  faUserSecret,
+  faComment,
+  faCheck,
+  faTimes,
+  faRedo,
+  faRunning,
+  faShoePrints,
+  faHome,
+  faUsersCog,
+  faSignOutAlt
+)
+
+Vue.component('fa-icon', FontAwesomeIcon)
+
 //use firestore()
 Vue.use(VueFirestore)
 

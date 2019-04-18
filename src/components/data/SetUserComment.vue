@@ -3,25 +3,21 @@
     <button @click="setUserData()">set user comment</button>
     <button @click="setUserData2()">set user day2</button>
     <form action>
-      <input type="text" name id v-model="day.comment" placeholder="enter a comment">
+      <input
+        type="text"
+        name
+        id
+        v-model="day.comment"
+        placeholder="enter a comment"
+      />
     </form>
-    <div>{{day.comment}}</div>
+    <div>{{ day.comment }}</div>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 
-import { usersCollection, db, user10k } from '../../firebaseConfig.js'
-import {
-  weekOne,
-  weekTwo,
-  weekThree,
-  weekFour,
-  weekFive,
-  weekSix,
-  weekSeven,
-  weekEight
-} from './weekClass'
+import { db } from '../../firebaseConfig.js'
 
 export default {
   data() {
@@ -53,7 +49,7 @@ export default {
           comment: comment
         })
         .then(ref => {
-          console.log('done. no error.')
+          console.log('done. no error.', ref)
 
           this.day.comment = 'success!'
         })
@@ -78,7 +74,7 @@ export default {
           comment: comment
         })
         .then(ref => {
-          console.log('done. no error.')
+          console.log('done. no error.', ref)
 
           this.day.comment = 'success!'
         })

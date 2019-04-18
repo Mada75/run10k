@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-show="requesting" class="show">dsaaaaaaaaaaaaaaaaaaaaaa</div>
-    <week-view :week="weekOne" :weekNo="'weekOne'"/>
-    <week-view :week="weekOne" :weekNo="'weekTwo'"/>
+    <week-view :week="weekOne" :weekNo="'weekOne'" />
+    <week-view :week="weekOne" :weekNo="'weekTwo'" />
   </div>
 </template>
 <script>

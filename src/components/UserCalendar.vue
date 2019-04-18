@@ -1,21 +1,27 @@
 <template>
   <div>
-    <week-view :week="currentUserPlanWeekOne" :weekNo="'week 1'"/>
-    <week-view :week="currentUserPlanWeekTwo" :weekNo="'week 2'"/>
-    <week-view :week="currentUserPlanWeekThree" :weekNo="'week 3'"/>
-    <week-view :week="currentUserPlanWeekFour" :weekNo="'week 4'"/>
-    <week-view :week="currentUserPlanWeekFive" :weekNo="'week 5'"/>
-    <week-view :week="currentUserPlanWeekSix" :weekNo="'week 6'"/>
-    <week-view :week="currentUserPlanWeekSeven" :weekNo="'week 7'"/>
-    <week-view :week="currentUserPlanWeekEight" :weekNo="'week 8'"/>
+    <button @click="toggleHideRestDays" v-show="showRestDays">
+      Hide rest days
+    </button>
+    <button @click="toggleHideRestDays" v-show="!showRestDays">
+      Show all days
+    </button>
+    <button @click="toggleHideExtras">toggle extras</button>
+
+    <week-view :week="currentUserPlanWeekOne" :weekNo="'week 1'" />
+    <week-view :week="currentUserPlanWeekTwo" :weekNo="'week 2'" />
+    <week-view :week="currentUserPlanWeekThree" :weekNo="'week 3'" />
+    <week-view :week="currentUserPlanWeekFour" :weekNo="'week 4'" />
+    <week-view :week="currentUserPlanWeekFive" :weekNo="'week 5'" />
+    <week-view :week="currentUserPlanWeekSix" :weekNo="'week 6'" />
+    <week-view :week="currentUserPlanWeekSeven" :weekNo="'week 7'" />
+    <week-view :week="currentUserPlanWeekEight" :weekNo="'week 8'" />
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
-const fb = require('../firebaseConfig.js')
 import WeekView from '@/components/WeekView.vue'
-import { db, currentUser } from '../firebaseConfig.js'
-import { weekOne } from './data/weekClass'
+import { db } from '../firebaseConfig.js'
 
 export default {
   components: { WeekView },
@@ -23,29 +29,18 @@ export default {
     // receive userProfile, currentUser from vuex store
     ...mapState(['userProfile', 'currentUser']),
 
-    weekOne() {
-      return this.currentUserPlan.slice(0, 7)
+    showRestDays() {
+      return this.$store.state.showRestDays
+    }
+  },
+  methods: {
+    toggleHideRestDays() {
+      console.log('toggling rest days')
+      this.$store.commit('toggleShowRestDays')
     },
-    weekTwo() {
-      return this.currentUserPlan.slice(7, 14)
-    },
-    weekThree() {
-      return this.currentUserPlan.slice(14, 21)
-    },
-    weekFour() {
-      return this.currentUserPlan.slice(21, 28)
-    },
-    weekFive() {
-      return this.currentUserPlan.slice(28, 35)
-    },
-    weekSix() {
-      return this.currentUserPlan.slice(35, 42)
-    },
-    weekSeven() {
-      return this.currentUserPlan.slice(42, 49)
-    },
-    weekEight() {
-      return this.currentUserPlan.slice(49, 56)
+    toggleHideExtras() {
+      console.log('toggling extras')
+      this.$store.commit('toggleShowExtras')
     }
   },
   firestore() {

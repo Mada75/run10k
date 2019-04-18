@@ -23,6 +23,10 @@ const router = new Router({
       redirect: '/404'
     },
     {
+      path: '/',
+      redirect: '/home'
+    },
+    {
       path: '/home',
       name: 'Home',
       component: Home

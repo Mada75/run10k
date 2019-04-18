@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a
-      href="https://firebase.google.com/docs/firestore/manage-data/add-data"
-    >https://firebase.google.com/docs/firestore/manage-data/add-data</a>
+    <a href="https://firebase.google.com/docs/firestore/manage-data/add-data"
+      >https://firebase.google.com/docs/firestore/manage-data/add-data</a
+    >
     <div>
       <button @click="setDoc()">Set Document</button>
       <button @click="mergeData()">merge data</button>
@@ -32,7 +32,7 @@ export default {
     mergeData() {
       var cityRef = db.collection('cities').doc('LA')
 
-      var setWithMerge = cityRef
+      cityRef
         .set(
           {
             capital: true

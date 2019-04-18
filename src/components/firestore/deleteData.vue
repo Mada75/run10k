@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a
-      href="https://firebase.google.com/docs/firestore/manage-data/delete-data"
-    >https://firebase.google.com/docs/firestore/manage-data/delete-data</a>
+    <a href="https://firebase.google.com/docs/firestore/manage-data/delete-data"
+      >https://firebase.google.com/docs/firestore/manage-data/delete-data</a
+    >
     <div>
       <button @click="deleteDoc()">Delete Document</button>
       <button @click="deleteFieldDoc()">Delete Document Field</button>
@@ -28,7 +28,7 @@ export default {
       var cityRef = db.collection('cities').doc('BJ')
 
       // Remove the 'capital' field from the document
-      var removeCapital = cityRef
+      cityRef
         .update({
           capital: fs.FieldValue.delete()
         })

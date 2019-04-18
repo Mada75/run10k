@@ -1,26 +1,26 @@
 <template>
   <div>
-    <a
-      href="https://github.com/gdg-tangier/vue-firestore"
-    >https://github.com/gdg-tangier/vue-firestore</a>
+    <a href="https://github.com/gdg-tangier/vue-firestore"
+      >https://github.com/gdg-tangier/vue-firestore</a
+    >
     <div>
       heroes:
-      {{heroes}}
-      {{weekOne}}
+      {{ heroes }}
+      {{ weekOne }}
       <button @click="marvelHeroes(weekOne)">filet</button>
-      {{result}}
+      {{ result }}
     </div>
     <div>
-      <input type="text" v-model="newReptile" @keyup.enter="addReptile">
+      <input type="text" v-model="newReptile" @keyup.enter="addReptile" />
       <button @click="addReptile">Add Reptile</button>
     </div>
     <ul class="reptileList">
       <li v-for="(reptile, index) in reptiles" :key="index">
-        {{ reptile.name }} - {{ford}}
+        {{ reptile.name }} - {{ ford }}
         <button @click="deleteReptile(reptile)">Remove</button>
       </li>
     </ul>
-    {{collectionRef}}
+    {{ collectionRef }}
   </div>
 </template>
 

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <button @click="setUserData()">set user: {{currentUser.uid}} data</button>
+    <button @click="setUserData()">set user: {{ currentUser.uid }} data</button>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 
-import { db, fs } from '../../firebaseConfig.js'
+import { db } from '../../firebaseConfig.js'
 import {
   weekOne,
   weekTwo,
@@ -98,8 +98,7 @@ export default {
       return batch
         .commit()
         .then(data => {
-          console.log('good')
-          console.log('adam')
+          console.log('good, data=> ', data)
         })
         .catch(error => {
           console.log(error, 'there is an error')

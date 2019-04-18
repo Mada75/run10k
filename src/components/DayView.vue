@@ -1,21 +1,17 @@
 <template>
-  <div class="day-view">
+  <div class="day-view" :class="classObject">
     <div class="day-day">{{ day.day }}</div>
     <div class="day-type">{{ day.type }}</div>
     <div class="day-body">
       <div class="day-activity">{{ day.activity }}</div>
     </div>
-    <div v-if="$route.path==='/myplan'">
-      <user-comment :day="day"/>
-      <user-complete :day="day"/>
+    <div v-if="$route.path === '/myplan'">
+      <user-comment :day="day" v-show="showExtras" />
     </div>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import { currentUser } from '../firebaseConfig.js'
 import UserComment from '@/components/data/UserComment.vue'
-import UserComplete from '@/components/data/UserComplete.vue'
 export default {
   props: {
     day: {
@@ -24,12 +20,38 @@ export default {
     }
   },
   components: {
-    UserComment,
-    UserComplete
+    UserComment
+  },
+  data() {
+    return {
+      active: true,
+      complete: false,
+      'text-danger': false,
+      extras: true
+    }
+  },
+  computed: {
+    classObject() {
+      return {
+        active: this.complete
+      }
+    },
+    showExtras() {
+      return this.$store.state.showExtras
+    }
+  },
+  methods: {
+    check() {
+      console.log('checked!')
+      this.complete = true
+    }
   }
 }
 </script>
 <style lang="scss" scoped>
+.active {
+  background: lightgreen !important;
+}
 @import 'src/assets/scss/_global.scss';
 .day-view {
   padding: 1rem 0.5rem;
@@ -38,7 +60,7 @@ export default {
   justify-content: space-between;
   align-items: stretch;
   height: 100%;
-  background: rgba($medium, 0.3);
+  background: rgba($medium, 0.1);
   text-align: center;
 }
 .day-body {

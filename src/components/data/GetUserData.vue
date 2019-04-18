@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div>comment:{{dayComment}}</div>
+    <div>comment:{{ dayComment }}</div>
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 
-import { currentUser, db } from '../../firebaseConfig.js'
+import { db } from '../../firebaseConfig.js'
 
 export default {
   props: {
@@ -25,18 +25,13 @@ export default {
   computed: {
     ...mapState(['currentUser']),
     comment() {
-      let self = this
-      let count = 'adamamda'
-      let colRef = db
+      return db
         .collection('users')
         .doc(this.currentUser.uid)
         .collection('10k')
         .doc('01')
         .onSnapshot(function(doc) {
           console.log('Current data: ', doc.data())
-          this.count = doc.data()
-          console.log(this.count.comment)
-          self.test = this.count.comment
         })
       //   this.test=   this.count.comment
     }
@@ -44,5 +39,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

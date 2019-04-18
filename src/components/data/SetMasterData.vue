@@ -5,7 +5,16 @@
 </template>
 <script>
 import { db } from '../../firebaseConfig.js'
-import { weekOne, weekTwo, weekThree, weekFour, weekFive, weekSix, weekSeven, weekEight } from './weekClass'
+import {
+  weekOne,
+  weekTwo,
+  weekThree,
+  weekFour,
+  weekFive,
+  weekSix,
+  weekSeven,
+  weekEight
+} from './weekClass'
 
 export default {
   data() {
@@ -15,8 +24,16 @@ export default {
   },
   created() {
     // move each week object into an Array
-    let weeksArray = weekOne.concat(weekTwo, weekThree, weekFour, weekFive, weekSix, weekSeven, weekEight); 
-    
+    let weeksArray = weekOne.concat(
+      weekTwo,
+      weekThree,
+      weekFour,
+      weekFive,
+      weekSix,
+      weekSeven,
+      weekEight
+    )
+
     // convert the Array to a String
     const daysString = JSON.stringify(weeksArray)
 
@@ -54,7 +71,7 @@ export default {
       return batch
         .commit()
         .then(data => {
-          console.log('good')
+          console.log('good, data=> ', data)
         })
         .catch(error => {
           console.log(error, 'there is an error')

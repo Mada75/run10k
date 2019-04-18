@@ -19,11 +19,16 @@
     </div>
     <section>
       <div class="col2" :class="{ 'signup-form': !showForgotPassword }">
-        <form  @submit.prevent>
+        <form @submit.prevent>
           <h1>Welcome Back</h1>
 
           <label for="email1">Email</label>
-          <input v-model.trim="loginForm.email" type="text" placeholder="you@email.com" id="email1">
+          <input
+            v-model.trim="loginForm.email"
+            type="text"
+            placeholder="you@email.com"
+            id="email1"
+          />
 
           <label for="password1">Password</label>
           <input
@@ -31,9 +36,9 @@
             type="password"
             placeholder="******"
             id="password1"
-          >
+          />
 
-<!--           <button @click="login" class="button">Log In</button>
+          <!--           <button @click="login" class="button">Log In</button>
  -->
           <div class="extras">
             <a @click="togglePasswordReset">Forgot Password</a>
@@ -44,10 +49,20 @@
           <h1>Get Started</h1>
 
           <label for="name">Name</label>
-          <input v-model.trim="signupForm.name" type="text" placeholder="Savvy Apps" id="name">
+          <input
+            v-model.trim="signupForm.name"
+            type="text"
+            placeholder="Savvy Apps"
+            id="name"
+          />
 
           <label for="title">Title</label>
-          <input v-model.trim="signupForm.title" type="text" placeholder="Company" id="title">
+          <input
+            v-model.trim="signupForm.title"
+            type="text"
+            placeholder="Company"
+            id="title"
+          />
 
           <label for="email2">Email</label>
           <input
@@ -55,7 +70,7 @@
             type="text"
             placeholder="you@email.com"
             id="email2"
-          >
+          />
 
           <label for="password2">Password</label>
           <input
@@ -63,7 +78,7 @@
             type="password"
             placeholder="min 6 characters"
             id="password2"
-          >
+          />
 
           <button @click="signup" class="button">Sign Up</button>
 
@@ -82,7 +97,7 @@
               type="text"
               placeholder="you@email.com"
               id="email3"
-            >
+            />
 
             <button @click="resetPassword" class="button">Submit</button>
 
@@ -93,7 +108,9 @@
           <div v-else>
             <h1>Email Sent</h1>
             <p>check your email for a link to reset your password</p>
-            <button @click="togglePasswordReset" class="button">Back to login</button>
+            <button @click="togglePasswordReset" class="button">
+              Back to login
+            </button>
           </div>
         </form>
         <transition name="fade">
@@ -112,7 +129,7 @@ const fb = require('../firebaseConfig.js')
 export default {
   data() {
     return {
-            loginForm: {
+      loginForm: {
         email: '',
         password: ''
       },
@@ -125,7 +142,7 @@ export default {
     }
   },
   methods: {
-        toSignUp() {
+    toSignUp() {
       this.errorMsg = ''
       this.$emit('toggle-form', 'sign-up')
     },
@@ -176,9 +193,9 @@ export default {
 @import 'src/assets/scss/_global.scss';
 
 /* If the screen size is 601px wide or more */
-@media screen and (min-width:743px) {
+@media screen and (min-width: 743px) {
 }
 /* If the screen size is 600px wide or less */
-@media screen and (max-width:742px) {
+@media screen and (max-width: 742px) {
 }
 </style>

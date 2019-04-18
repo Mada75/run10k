@@ -11,12 +11,6 @@
               <textarea v-model.trim="post.content"></textarea>
               <button @click="fire()">fire</button>
               <button @click="setMaster()">fire</button>
-              <!-- 
-              <button @click="go()">go</button>
-              <button @click="createPost" :disabled="post.content === ''" class="button">post</button>
-              <button @click="go" :disabled="post.content === ''" class="button">go</button>
-
-              -->
             </form>
           </div>
         </div>
@@ -36,7 +30,6 @@
 // https://firebase.google.com/docs/firestore/manage-data/transactions#batched-writes
 // https://stackoverflow.com/questions/46795817/how-to-efficiently-add-items-to-collection-with-firebase-firestore/46797527
 import { mapState } from 'vuex'
-const fb = require('../firebaseConfig.js')
 import { db } from '../firebaseConfig.js'
 
 export default {
@@ -87,7 +80,7 @@ export default {
       return batch
         .commit()
         .then(data => {
-          console.log('good')
+          console.log('good, data => ', data)
           this.performingRequest = false
         })
         .catch(error => {
@@ -124,37 +117,11 @@ export default {
       return batch
         .commit()
         .then(data => {
-          console.log('good')
+          console.log('good, data => ', data)
           this.performingRequest = false
         })
         .catch(error => {
           console.log(error, 'there is an error')
-        })
-    },
-    createPost() {
-      var batch = { userOne, userTwo, userOne }
-      //
-      fb.postsCollection
-        .add(Object.assign({}, batch))
-        //  .add(Object.assign({}, userOne, userTwo, ) )
-        //  fb.postsCollection
-        //  .add({
-        //  userTwo
-        //   test: this.dayArrays
-
-        // createdOn: new Date(),
-        /*  content: this.post.content,
-          userId: this.currentUser.uid,
-          userName: this.userProfile.name,
-          comments: 0,
-          likes: 0
-          */
-        //    })
-        .then(ref => {
-          this.post.content = ''
-        })
-        .catch(err => {
-          console.log(err)
         })
     }
   }

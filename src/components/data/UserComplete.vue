@@ -1,23 +1,22 @@
 <template>
-  <div>
-    <div>
-      <fa-icon
-        :icon="myIcon"
-        @click="setInComplete(day.dayId)"
-        v-if="day.complete == true"
-        class="icon"
-        title="Reset today"
-        @mouseover="myIcon = 'redo'"
-        @mouseout="myIcon = 'running'"
-      />
-      <fa-icon
-        icon="check"
-        @click="setComplete(day.dayId)"
-        v-else
-        title="Complete today"
-        class="icon"
-      />
-    </div>
+  <div id="user-complete">
+    <fa-icon
+      :icon="myIcon"
+      @click="setInComplete(day.dayId)"
+      v-if="day.complete == true"
+      class="icon"
+      title="Reset today"
+      @mouseover="myIcon = 'redo'"
+      @mouseout="myIcon = 'check'"
+      :class="[myIcon == 'check' ? 'check' : 'reset']"
+    />
+    <fa-icon
+      icon="running"
+      @click="setComplete(day.dayId)"
+      v-else
+      title="Complete today"
+      class="icon running"
+    />
   </div>
 </template>
 <script>
@@ -34,7 +33,7 @@ export default {
   },
   data() {
     return {
-      myIcon: 'running'
+      myIcon: 'check'
     }
   },
   computed: {
@@ -75,24 +74,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import 'src/assets/scss/_global.scss';
-
-.icon {
-  width: 100%;
-  cursor: pointer;
-  color: #00008b;
-  flex: 0 1 50%;
-  transition: all 100ms ease;
-
-  &:hover {
-    color: $primary;
-  }
-}
-.active {
-  // background: green;
-}
-.nope {
-}
-</style>

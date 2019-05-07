@@ -25,15 +25,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {}
-  },
-  methods: {}
-}
-</script>
-
 <style lang="scss" scoped>
 .modal-mask {
   position: fixed;
@@ -65,7 +56,7 @@ export default {
   align-items: center;
   margin-top: 0;
   background: #e6ecf0;
-  color: black;
+  color: #00008b;
   padding: 0.3rem 1rem;
   text-transform: capitalize;
 }

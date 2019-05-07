@@ -1,18 +1,21 @@
-// imports
-
 // colors
+$interact: #30a0ee;
+$attention: #00008b;
+$bg-dark: #e6ecf0;
+
 $primary: #30a0ee;
 $error: #ef5777;
-$success: #1abc9c;
+$success: #3c3;
 $light: #f5f8fa;
 $medium: #657786;
 $dark: #34495e;
 $white: #fff;
+
 // resets
 body {
   margin: 0;
   color: $dark;
-  background: #e6ecf0;
+  background: $bg-dark;
 }
 
 html {
@@ -22,10 +25,8 @@ html {
 
 * {
   box-sizing: border-box;
-  transition: 0.15s;
+  transition:  .25s;
   font-family: Arial, Helvetica, sans-serif;
-
-
   &:focus {
     outline: none;
   }
@@ -36,6 +37,7 @@ h2,
 h3,
 h4,
 h5,
+h6,
 p {
   margin: 0rem;
 }
@@ -61,27 +63,27 @@ h5 {
 }
 
 a {
-  font-family: Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  color: $primary;
   margin: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  color: $interact;
   cursor: pointer;
-
+  transition: all 0.5s;
   &:hover {
-    color: lighten($primary, 5%);
+    text-decoration: underline;
+    filter: brightness(70%);
   }
 }
 
 // globals
 .col1,
 .col2 {
-	flex-grow: 1;
-	flex-basis: 0;
-	padding: 1rem;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 1rem;
 
-	@media screen and (max-width:742px) {
-
-	}
+  @media screen and (max-width: 742px) {
+  }
 }
 [v-cloak] {
   display: none;
@@ -169,15 +171,14 @@ ul {
 }
 
 .inline {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-	li {
-		display: inline-block;
-	}
+  li {
+    display: inline-block;
+  }
 }
-
 
 .clear {
   clear: both;

@@ -19,10 +19,12 @@ import {
   faShoePrints,
   faHome,
   faUsersCog,
-  faSignOutAlt
+  faSignOutAlt,
+  faQuestion,
+  faSave,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
 library.add(
   faCoffee,
   faUserSecret,
@@ -34,9 +36,11 @@ library.add(
   faShoePrints,
   faHome,
   faUsersCog,
-  faSignOutAlt
+  faSignOutAlt,
+  faQuestion,
+  faSave,
+  faTrashAlt
 )
-
 Vue.component('fa-icon', FontAwesomeIcon)
 
 //use firestore()
@@ -44,6 +48,7 @@ Vue.use(VueFirestore)
 
 // Import Firebase configuration
 const fb = require('./firebaseConfig.js')
+
 // Import scss files
 import './assets/scss/app.scss'
 

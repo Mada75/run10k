@@ -14,17 +14,11 @@ export default {
   props: {
     activity: {
       type: Object,
-      required: true,
-      default: function() {
-        return { message: 'hello' }
-      }
+      required: true
     }
   },
   components: {
     ModalComponent
-  },
-  data() {
-    return {}
   },
   // escape key closes modal
   mounted: function() {

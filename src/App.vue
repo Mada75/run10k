@@ -19,12 +19,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-#app {
-  // pushes nav/footer apart if no content
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
-}
-</style>
+<style lang="scss" scoped></style>

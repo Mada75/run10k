@@ -8,14 +8,14 @@
     </button>
     <button @click="toggleHideExtras">toggle extras</button>
 
-    <week-view :week="currentUserPlanWeekOne" :weekNo="'week 1'" />
-    <week-view :week="currentUserPlanWeekTwo" :weekNo="'week 2'" />
-    <week-view :week="currentUserPlanWeekThree" :weekNo="'week 3'" />
-    <week-view :week="currentUserPlanWeekFour" :weekNo="'week 4'" />
-    <week-view :week="currentUserPlanWeekFive" :weekNo="'week 5'" />
-    <week-view :week="currentUserPlanWeekSix" :weekNo="'week 6'" />
-    <week-view :week="currentUserPlanWeekSeven" :weekNo="'week 7'" />
-    <week-view :week="currentUserPlanWeekEight" :weekNo="'week 8'" />
+    <week-view :week="currentUserPlanWeekOne" :weekNo="'1'" />
+    <week-view :week="currentUserPlanWeekTwo" :weekNo="'2'" />
+    <week-view :week="currentUserPlanWeekThree" :weekNo="'3'" />
+    <week-view :week="currentUserPlanWeekFour" :weekNo="'4'" />
+    <week-view :week="currentUserPlanWeekFive" :weekNo="'5'" />
+    <week-view :week="currentUserPlanWeekSix" :weekNo="'6'" />
+    <week-view :week="currentUserPlanWeekSeven" :weekNo="'7'" />
+    <week-view :week="currentUserPlanWeekEight" :weekNo="'8'" />
   </div>
 </template>
 <script>

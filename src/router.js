@@ -5,11 +5,11 @@ import 'firebase/auth'
 
 import Home from '@/views/Home'
 import Login from '@/views/Login'
-import Dashboard from '@/views/Dashboard'
-import MyPlan from '@/views/MyPlan'
-import Settings from '@/views/Settings'
+import Dashboard from '@/views/test/Dashboard'
+import UserPlan from '@/views/UserPlan'
+import Settings from '@/views/test/Settings'
 import Error404 from '@/views/Error404.vue'
-import Test from '@/views/Test.vue'
+import Test from '@/views/test/Test.vue'
 
 Vue.use(Router)
 
@@ -52,7 +52,7 @@ const router = new Router({
     {
       path: '/myplan',
       name: 'MyPlan',
-      component: MyPlan,
+      component: UserPlan,
       meta: {
         requiresAuth: true
       }

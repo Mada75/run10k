@@ -7,13 +7,11 @@
     </transition>
     <section>
       <div class="col1">
-        <h1>Vuegram</h1>
+        <h1>10k Running Plan</h1>
         <p>
-          Welcome to the
-          <a href="https://savvyapps.com/" target="_blank">Savvy Apps</a> sample
-          social media web app powered by Vue.js and Firebase. Build this
-          project by checking out The Definitive Guide to Getting Started with
-          Vue.js
+          Welcome to your 10k running plan powered by Vue.js and Firebase.
+          <br />Sign up for access to your personalised plan allowing you to add
+          comments and check days off your plan.
         </p>
       </div>
       <div
@@ -39,11 +37,12 @@
             id="password1"
           />
 
-          <button @click="login" class="button">Log In</button>
-
           <div class="extras">
-            <a @click="togglePasswordReset">Forgot Password</a>
-            <a @click="toggleForm">Create an Account</a>
+            <button @click="login" class="button">Log In</button>
+            <div>
+              <a @click="togglePasswordReset">Forgot Password</a>
+              <a @click="toggleForm">Create an Account</a>
+            </div>
           </div>
         </form>
         <form v-if="!showLoginForm && !showForgotPassword" @submit.prevent>
@@ -81,10 +80,11 @@
             id="password2"
           />
 
-          <button @click="signup" class="button">Sign Up</button>
-
           <div class="extras">
-            <a @click="toggleForm">Back to Log In</a>
+            <button @click="signup" class="button">Sign Up</button>
+            <div>
+              <a @click="toggleForm">Back to Log In</a>
+            </div>
           </div>
         </form>
         <form v-if="showForgotPassword" @submit.prevent class="password-reset">
@@ -100,10 +100,11 @@
               id="email3"
             />
 
-            <button @click="resetPassword" class="button">Submit</button>
-
             <div class="extras">
-              <a @click="togglePasswordReset">Back to Log In</a>
+              <button @click="resetPassword" class="button">Submit</button>
+              <div>
+                <a @click="togglePasswordReset">Back to Log In</a>
+              </div>
             </div>
           </div>
           <div v-else>
@@ -256,7 +257,7 @@ export default {
             .then(() => {
               this.$store.dispatch('fetchUserProfile')
               this.performingRequest = false
-              this.$router.push('/myplan#my-plan')
+              this.$router.push({ name: 'MyPlan#my-plan' })
               this.setUserData()
             })
             .catch(err => {

@@ -22,7 +22,8 @@ import {
   faSignOutAlt,
   faQuestion,
   faSave,
-  faTrashAlt
+  faTrashAlt,
+  faBars
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(
@@ -39,7 +40,8 @@ library.add(
   faSignOutAlt,
   faQuestion,
   faSave,
-  faTrashAlt
+  faTrashAlt,
+  faBars
 )
 Vue.component('fa-icon', FontAwesomeIcon)
 

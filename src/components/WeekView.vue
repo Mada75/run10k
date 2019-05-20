@@ -17,7 +17,12 @@
 
     <!-- user view, hidden rest days -->
     <div v-if="!showRestDays && $route.path === '/myplan'" class="week-wrapper">
-      <div v-for="day in userWeek" :key="day.dayId" class="weekdays" v-show="day.type != 'rest'">
+      <div
+        v-for="day in userWeek"
+        :key="day.dayId"
+        class="weekdays"
+        v-show="day.type != 'rest'"
+      >
         <day-view
           :day="day"
           :class="[
@@ -31,7 +36,7 @@
     <!-- home view, cannot edit rest view -->
     <div v-if="$route.path === '/home'" class="week-wrapper">
       <div v-for="day in userWeek" :key="day.dayId" class="weekdays">
-        <day-view :day="day" class="day"/>
+        <day-view :day="day" class="day" />
       </div>
     </div>
   </div>
@@ -67,6 +72,9 @@ export default {
     user() {
       return this.$store.state.currentUser
     }
+  },
+  beforeDestroy: function(){
+    console.log('DESTROYYYY!!!')
   }
 }
 </script>

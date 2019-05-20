@@ -1,7 +1,9 @@
 <template>
   <header id="nav-bar">
     <a href="https://adp-cv.firebaseapp.com/" target="_blank">
-      <img src="../../public/ap-logo.png"      />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/adp-cv.appspot.com/o/base%2Fadam-logo.jpg?alt=media&token=2aa71b01-e382-4c1e-b29f-184a44b73e3a"
+      />
     </a>
     <ul>
       <li>

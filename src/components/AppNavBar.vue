@@ -1,49 +1,28 @@
 <template>
-  <header id="nav-bar">
-    <a href="https://adp-cv.firebaseapp.com/" target="_blank">
-      <img src="../../public/ap-logo.png"      />
-    </a>
-    <ul>
-      <li>
-        <router-link :to="{ name: 'Home' }" class="link">HomeLARGE</router-link>
-      </li>
-      <li v-if="!currentUser">
-        <router-link :to="{ name: 'Login' }" class="link">Login</router-link>
-      </li>
-      <li v-if="currentUser">
-        <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
-      </li>
-      <li v-if="currentUser">
-        <a @click="logout" class="link">Logout</a>
-      </li>
-    </ul>
-    <!--     <div v-show="navBarHidden" class="small-nav" :class="{ 'nav-sm': toggleMenu }">
-      <a href="https://adp-cv.firebaseapp.com/" target="_blank">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/adp-cv.appspot.com/o/base%2Fadam-logo.jpg?alt=media&token=2aa71b01-e382-4c1e-b29f-184a44b73e3a"
-        >
-      </a>
+  <header>
+    <nav>
+      <ul>
+        <li class="logo">
+          <a href="https://adp-cv.firebaseapp.com/" target="_blank">
+            <img src="../../public/ap-logo.png">
+          </a>
+        </li>
+        <li class="home">
+          <router-link :to="{ name: 'Home' }" class="link">Home</router-link>
+        </li>
 
-      <div @click="toggleBurgerMenu()" class="burger link">
-        {{ menu }}
-        <fa-icon :icon="icon" style="margin-left:1px;"/>
-      </div>
-      <ul v-show="navMenuOpen">
-        <li>
-          <router-link :to="{ name: 'Home' }" class="link" @click="toggleBurgerMenu">Home</router-link>
+        <li v-if="currentUser">
+          <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
         </li>
+
         <li v-if="!currentUser">
-          <router-link :to="{ name: 'Login' }" class="link" @click="toggleBurgerMenu">Login</router-link>
+          <router-link :to="{ name: 'Login' }" class="link">Login</router-link>
         </li>
         <li v-if="currentUser">
-          <router-link :to="{ name: 'MyPlan' }" class="link" @click="toggleBurgerMenu">My Plan</router-link>
-        </li>
-        <li v-if="currentUser">
-          <a @click="logout">Logout</a>
+          <a @click="logout" class="link">Logout</a>
         </li>
       </ul>
-    </div>
- -->
+    </nav>
   </header>
 </template>
 
@@ -62,7 +41,7 @@ export default {
       menu: 'Menu'
     }
   },
-  mounted() {
+  /*   mounted() {
     this.$nextTick(function() {
       window.addEventListener('resize', this.getWindowWidth)
 
@@ -72,8 +51,8 @@ export default {
   beforeDestroy() {
     window.removeEventListener('resize', this.getWindowWidth)
   },
-  computed: {
-    toggleMenu() {
+ */ computed: {
+    /*     toggleMenu() {
       let self = this
       if (this.windowWidth <= 1800) {
         return (self.navBarHidden = false)
@@ -81,10 +60,12 @@ export default {
         return (self.navBarHidden = true)
       }
     },
-    ...mapState(['currentUser'])
+ */ ...mapState(
+      ['currentUser']
+    )
   },
   methods: {
-    getWindowWidth() {
+    /*     getWindowWidth() {
       // windowWidth function
       this.windowWidth = document.documentElement.clientWidth
     },
@@ -98,7 +79,7 @@ export default {
         this.menu = 'Menu'
       }
     },
-    logout() {
+ */ logout() {
       fb.auth
         .signOut()
         .then(() => {
@@ -112,4 +93,72 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+//@import '@/assets/scss/_layout.scss';
+header {
+  background-image: url('https://peaksport.nz/wp-content/uploads/2018/09/ultra-running-banner-peak.jpg');
+  background-size: 100%; // always take up 100% available width
+  background-position: center; // center image as will move depening on screen width
+  background-repeat: no-repeat;
+  height: 300px;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0),
+      rgba(21, 29, 52, 1)
+    );
+    .logo a img {
+      filter: invert(100%);
+      margin-right: auto;
+      height: 64px;
+    }
+    .home {
+      //  margin: 0 auto;
+      justify-items: flex-start;
+    }
+    li:first-child {
+      margin-right: auto;
+    }
+    li:not(:first-child) {
+      //  line-height: 54px;
+
+      a {
+        display: inline-block;
+        color: white;
+        border: 1px solid black;
+        min-width: 100px;
+        text-align: center;
+        margin: 0 10px;
+        padding: 22px 10px;
+      }
+    }
+    //  .logo a img {
+    //  height: 64px;
+    // background-color: red;
+    // }
+  }
+}
+@media screen and (max-width: 800px) {
+  header {
+    background-repeat: no-repeat;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 550px) {
+  header {
+    background-position: left top; // center image as will move depening on screen width
+    height: 150px;
+  }
+}
+@media screen and (max-width: 500px) {
+  header {
+    display: none;
+  }
+}
+</style>

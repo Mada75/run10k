@@ -73,8 +73,5 @@ export default {
       return this.$store.state.currentUser
     }
   },
-  beforeDestroy: function(){
-    console.log('DESTROYYYY!!!')
-  }
 }
 </script>

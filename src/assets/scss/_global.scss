@@ -66,12 +66,12 @@ a {
   margin: 0;
   text-decoration: underline;
   text-decoration-color: transparent;
-  color: $interact;
+  color: inherit;
   cursor: pointer;
   transition: all 0.5s;
   &:hover {
     text-decoration: underline;
-    filter: brightness(70%);
+    filter: brightness(80%);
   }
 }
 

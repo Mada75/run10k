@@ -3,13 +3,60 @@
     <div>
       <h1 class="heading-title">10k training plan</h1>
       <p class="sub-heading">
-        This training plan allows you to see your 10k fitness rocket over a
-        period of eight weeks
+        Running is a great way to get fit, feel better and even form new relationships
+        with other runners. Starting a new running habit doesn’t have to be hard - all it takes is a
+        comfortable pair of shoes and a willingness to move a little or a lot, all at your own pace.
+        <br>This training plan allows you to see your running fitness rocket over a
+        period of eight weeks.
       </p>
     </div>
-    <img :src="image.location" :alt="image.alt" :title="image.title" />
+
+  
+
+    <div class="train-box">
+      <h5> first pick a race</h5>
+      <p>
+        The absolute best way to keep yourself running is to find a race, sign up for it,
+        pay for it and put it on your calendar. <strong>
+        A fixed race date will help you stay focused,
+        and keep you on a regular running schedule.</strong>
+        You can run any race — you just need to allow enough time to train for it.
+        Pick your distance and use an online race finder like the
+        <a
+          href="https://www.runnersworld.com/training/a20803105/race-finder/"
+          target="_blank"
+        >Runner’s World Race Finder</a>
+        to help you find the right race for you.
+      </p>
+    </div>
+
+    <div class="train-box">
+      <h5>running form</h5>
+      <p>
+        Some people are natural heel-strikers while others tend to lead with their toes. T
+        he good news: neither form is inherently better than the other.
+        And you are less likely to become injured if you simply maintain your natural stride.
+        <strong>
+        The more you run, the more comfortable that stride will feel the more efficient your body will become.
+
+        </strong>
+      </p>
+    </div>
+    <div class="train-box">
+      <h5>choose a training plan</h5>
+      <p>
+        You can find any number of elaborate training plans online and in print,
+        but I believe in keeping it simple. <a href="#week-view">Below</a> you will find a training plan modelled on
+        <a
+          href="https://www.runnersworld.com/uk/training/10km/a760075/rws-8-week-10k-schedule-5-days-per-week/"
+        >Runner's World 8-week 10K training plan, running 5 days a week</a> a great formula for a great training plan.
+      </p>
+    </div>
+        <img :src="image.location" :alt="image.alt" :title="image.title">
+
+
     <div>
-      <h2>what's in a plan?</h2>
+      <h3>What's in a plan?</h3>
       <p>
         It’s important that you’re flexible in your approach in respect to
         effort and recovery. Before starting this training plan, try and build
@@ -38,11 +85,11 @@
       app-modal only renders when activity.modal = true
     -->
     <section>
-      <modal-slot :activity="strides" />
-      <modal-slot :activity="intervals" />
-      <modal-slot :activity="fartlek" />
-      <modal-slot :activity="tempo" />
-      <modal-slot :activity="speedwork" />
+      <modal-slot :activity="strides"/>
+      <modal-slot :activity="intervals"/>
+      <modal-slot :activity="fartlek"/>
+      <modal-slot :activity="tempo"/>
+      <modal-slot :activity="speedwork"/>
     </section>
   </section>
 </template>
@@ -105,4 +152,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '@/assets/scss/app.scss';
+//@import '@/assets/scss/_global.scss';
+.train-box{
+  display: inline-block;
+  width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+</style>

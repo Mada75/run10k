@@ -2,6 +2,9 @@
   <div id="week-view">
     <div>{{ weekNo }}</div>
 
+    <!-- hidden tag for scroll to #tag work -->
+    <div class="hidden-anchor" :id="weekNo"></div>
+
     <!-- user view, showing rest days -->
     <div v-if="showRestDays && $route.path === '/myplan'" class="week-wrapper">
       <div v-for="day in userWeek" :key="day.dayId" class="weekdays">
@@ -17,12 +20,7 @@
 
     <!-- user view, hidden rest days -->
     <div v-if="!showRestDays && $route.path === '/myplan'" class="week-wrapper">
-      <div
-        v-for="day in userWeek"
-        :key="day.dayId"
-        class="weekdays"
-        v-show="day.type != 'rest'"
-      >
+      <div v-for="day in userWeek" :key="day.dayId" class="weekdays" v-show="day.type != 'rest'">
         <day-view
           :day="day"
           :class="[
@@ -36,7 +34,7 @@
     <!-- home view, cannot edit rest view -->
     <div v-if="$route.path === '/home'" class="week-wrapper">
       <div v-for="day in userWeek" :key="day.dayId" class="weekdays">
-        <day-view :day="day" class="day" />
+        <day-view :day="day" class="day"/>
       </div>
     </div>
   </div>
@@ -72,6 +70,16 @@ export default {
     user() {
       return this.$store.state.currentUser
     }
-  },
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+.hidden-anchor {
+  // used for #scroll
+  display: block;
+  position: relative;
+  top: -64px;
+  visibility: hidden;
+}
+</style>

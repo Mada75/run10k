@@ -1,21 +1,13 @@
 <template>
   <div>
-    <button @click="toggleHideRestDays" v-show="showRestDays">
-      Hide rest days
-    </button>
-    <button @click="toggleHideRestDays" v-show="!showRestDays">
-      Show all days
-    </button>
-    <button @click="toggleHideExtras">toggle extras</button>
-
-    <week-view :week="currentUserPlanWeekOne" :weekNo="'1'" />
-    <week-view :week="currentUserPlanWeekTwo" :weekNo="'2'" />
-    <week-view :week="currentUserPlanWeekThree" :weekNo="'3'" />
-    <week-view :week="currentUserPlanWeekFour" :weekNo="'4'" />
-    <week-view :week="currentUserPlanWeekFive" :weekNo="'5'" />
-    <week-view :week="currentUserPlanWeekSix" :weekNo="'6'" />
-    <week-view :week="currentUserPlanWeekSeven" :weekNo="'7'" />
-    <week-view :week="currentUserPlanWeekEight" :weekNo="'8'" />
+    <week-view :week="currentUserPlanWeekOne" :weekNo="'1'"/>
+    <week-view :week="currentUserPlanWeekTwo" :weekNo="'2'"/>
+    <week-view :week="currentUserPlanWeekThree" :weekNo="'3'"/>
+    <week-view :week="currentUserPlanWeekFour" :weekNo="'4'"/>
+    <week-view :week="currentUserPlanWeekFive" :weekNo="'5'"/>
+    <week-view :week="currentUserPlanWeekSix" :weekNo="'6'"/>
+    <week-view :week="currentUserPlanWeekSeven" :weekNo="'7'"/>
+    <week-view :week="currentUserPlanWeekEight" :weekNo="'8'"/>
   </div>
 </template>
 <script>
@@ -27,21 +19,7 @@ export default {
   components: { WeekView },
   computed: {
     // receive userProfile, currentUser from vuex store
-    ...mapState(['userProfile', 'currentUser']),
-
-    showRestDays() {
-      return this.$store.state.showRestDays
-    }
-  },
-  methods: {
-    toggleHideRestDays() {
-      console.log('toggling rest days')
-      this.$store.commit('toggleShowRestDays')
-    },
-    toggleHideExtras() {
-      console.log('toggling extras')
-      this.$store.commit('toggleShowExtras')
-    }
+    ...mapState(['userProfile', 'currentUser'])
   },
   firestore() {
     return {

@@ -45,6 +45,9 @@ library.add(
 )
 Vue.component('fa-icon', FontAwesomeIcon)
 
+/* https://github.com/niftylettuce/max-listeners-exceeded-warning#usage */
+/* https://www.npmjs.com/package/ava */
+
 //use firestore()
 Vue.use(VueFirestore)
 

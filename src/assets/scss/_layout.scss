@@ -42,12 +42,14 @@
         margin: 0 10px;
         &:hover {
           text-decoration: underline;
-          filter: brightness(70%);
+          color: orange;
+          //filter: brightness(70%);
         }
       }
       a.link.router-link-exact-active,
       a.link.router-link-active {
-        color: $primary;
+        //color: $primary;
+        color: orange;
         text-decoration: none;
       }
     }
@@ -127,17 +129,22 @@
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
+    a{
+      color: orange;
+    }
   }
   img {
     width: 100%;
     height: auto;
   }
   .train-box {
-    border: 3px solid $dark;
+    // create different look to headings
+    max-width: 800px;
+    margin: 0 auto;
     padding: 0 1rem;
-    margin: 1rem 0;
     h5 {
       padding: 0.5rem 0;
+      text-align: left;
       &::before,
       &::after {
         content: (' - ');

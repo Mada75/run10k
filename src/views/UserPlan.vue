@@ -1,15 +1,18 @@
 <template>
   <div id="my-plan">
+    <user-nav-bar/>
     <user-calendar />
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 import UserCalendar from '@/components/UserCalendar.vue'
+import UserNavBar from '@/components/UserNavBar.vue'
+
 
 export default {
   components: {
-    UserCalendar
+    UserCalendar,UserNavBar
   },
   computed: {
     ...mapState(['currentUser'])

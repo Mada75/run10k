@@ -1,22 +1,22 @@
 <template>
-  <div>
+  <div id="modal">
     <transition appear name="modal">
       <div class="modal-mask" @click="$emit('close')">
         <div class="modal-wrapper">
           <div class="modal-container" @click.stop>
             <div class="modal-header">
               <slot name="header"></slot>
-              <a @click="$emit('close')" title="Close window" class="button-x"
-                >X</a
-              >
+              <a @click="$emit('close')" title="Close Window">
+                <fa-icon icon="times" class="time"/>
+              </a>
             </div>
             <div class="modal-body">
               <slot name="bodyA"></slot>
-              <br />
+              <br>
               <slot name="bodyB"></slot>
             </div>
             <div class="modal-footer">
-              <button class="button" @click="$emit('close')">Close</button>
+              <button @click="$emit('close')">Close</button>
             </div>
           </div>
         </div>
@@ -26,16 +26,18 @@
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/app.scss';
+
 .modal-mask {
   position: fixed;
-  z-index: 9998;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(#34495e, 0.6);
+  background: rgba(#34495e, 0.3);
   display: table;
   transition: opacity 0.3s ease;
+  z-index: 9998;
 }
 .modal-wrapper {
   display: table-cell;
@@ -43,9 +45,10 @@
 }
 .modal-container {
   margin: 0px auto;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 0 1rem 0 rgba(blue, 0.5);
+  color: #34495e;
+  background: $bg-dark;
+  box-shadow: 0 0 3px 0 rgba(orange, 1);
+  border: 3px solid $white;
   transition: all 0.3s ease;
   overflow-y: auto;
 }
@@ -54,27 +57,42 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0;
-  background: #e6ecf0;
-  color: #00008b;
-  padding: 0.3rem 1rem;
+  background: rgba(21, 29, 52, 1);
   text-transform: capitalize;
+  color: $white;
 }
-a {
-  font-size: 10px;
-  width: 20px;
-  padding: 0.4rem;
-  border-radius: 10px;
-  text-align: center;
-}
-a:hover {
-  color: white;
+#modal {
+  .modal-mask {
+    a {
+      margin-right: 50px;
+      font-size: 10px;
+      width: 20px;
+      padding: 0.4rem;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      font-size: 2rem;
+      &:hover {
+        color: orange;
+      }
+    }
+    button {
+      background: rgba(21, 29, 52, 1);
+      color: white;
+      border: none;
+      padding: 1rem;
+      box-shadow: 3px 3px rgba(21, 29, 52, 0.3);
+      margin: 1rem;
+      &:hover {
+        cursor: pointer;
+        color: orange;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 .modal-enter {
   opacity: 0;
-}
-.button {
-  padding: 0.5rem;
 }
 .modal-leave-active {
   opacity: 0;
@@ -92,17 +110,12 @@ a:hover {
     height: 100%;
   }
 
-  .modal-wrapper {
-    padding: 0 10%;
-  }
   .modal-container {
-    width: calc(100vw - 20%);
+    width: 1200px;
+    max-width: calc(100vw - 100px);
     max-height: calc(100vh - 10%);
-    padding: 0.5rem;
-  }
-  .modal-body {
-    margin: 1.5rem 0;
-    line-height: 1.5;
+ //   margin-left:  10%;
+ //   margin-right:  50%;
   }
 }
 /* If the screen size is 600px wide or less */

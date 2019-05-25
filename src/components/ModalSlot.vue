@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="modal-text">
     <modal-component v-if="activity.modal" @close="activity.modal = false">
       <h3 slot="header">{{ activity.type }}</h3>
       <p slot="bodyA">{{ activity.bodyA }}</p>
@@ -31,4 +31,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+#modal-text p, h3 {
+  font-size: 1rem;
+  padding: 0;
+  margin:0 1rem;
+}
+#modal-text p:first-of-type{
+  margin-top: 1rem;
+}
+</style>

@@ -9,7 +9,10 @@
             <img src="../../public/ap-logo.png">
           </a>
         </li>
-        <li class="desktop" v-if="currentUser">
+        <li
+          class="desktop"
+          v-if="currentUser"
+        >
           <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
         </li>
         <li class="desktop">
@@ -37,7 +40,7 @@
     <nav id="mobile-nav" class="mobile-menu" v-show="mobileMenuOpen">
       <ul>
         <li class="mobile" @click="toggleMobileMenu()">
-          <router-link :to="{ name: 'Home' }  " class="link">Home</router-link>
+          <router-link :to="{ name: 'Home' }" class="link">Home</router-link>
         </li>
 
         <li class="mobile" v-if="currentUser" @click="toggleMobileMenu()">
@@ -58,13 +61,18 @@
 
 <script>
 import { mapState } from 'vuex'
+import UserNavBar from '@/components/UserNavBar.vue'
 
 const fb = require('../firebaseConfig.js')
 export default {
+  components: {
+    UserNavBar
+  },
   data() {
     return {
       mobileMenuOpen: false,
-      icon: 'bars'
+      icon: 'bars',
+      myPlan: false
     }
   },
   computed: {
@@ -86,8 +94,8 @@ export default {
         .then(() => {
           this.$store.dispatch('clearData')
           this.$router.push({ name: 'Home' })
-        this.mobileMenuOpen = false
-        this.icon = 'bars'
+          this.mobileMenuOpen = false
+          this.icon = 'bars'
         })
         .catch(err => {
           console.log(err)

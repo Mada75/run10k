@@ -7,12 +7,12 @@
             <div class="modal-header">
               <slot name="header"></slot>
               <a @click="$emit('close')" title="Close Window">
-                <fa-icon icon="times" class="time"/>
+                <fa-icon icon="times" class="time" />
               </a>
             </div>
             <div class="modal-body">
               <slot name="bodyA"></slot>
-              <br>
+              <br />
               <slot name="bodyB"></slot>
             </div>
             <div class="modal-footer">
@@ -114,8 +114,8 @@
     width: 1200px;
     max-width: calc(100vw - 100px);
     max-height: calc(100vh - 10%);
- //   margin-left:  10%;
- //   margin-right:  50%;
+    //   margin-left:  10%;
+    //   margin-right:  50%;
   }
 }
 /* If the screen size is 600px wide or less */

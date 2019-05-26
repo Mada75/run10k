@@ -3,7 +3,7 @@
     <!-- start primary menu -->
     <ul class="user-menu">
       <!-- logo visible on all screens -->
-<!--       <li @click="toggleHideRestDays">
+      <!--       <li @click="toggleHideRestDays">
         <button>
           {{toggleRest}}
           <br>rest days
@@ -15,11 +15,12 @@
           <br>details
         </button>
       </li>
- -->      <li v-for="(week, index) in weekNumber" :key="index">
-        <a :href="`#${week}`">
+      -->
+      <li v-for="(week, index) in weekNumber" :key="index">
+        <a :href="`#weekNo${week}`">
           Week
           <br>
-          {{week}}
+          {{ week }}
         </a>
       </li>
       <!-- toggle mobile menu -->

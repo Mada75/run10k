@@ -36,7 +36,7 @@
       <h5>running form</h5>
       <p>
         Some people are natural heel-strikers while others tend to lead with
-        their toes. T he good news: neither form is inherently better than the
+        their toes. The good news: neither form is inherently better than the
         other. And you are less likely to become injured if you simply maintain
         your natural stride.
         <strong>

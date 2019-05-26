@@ -32,12 +32,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#modal-text p, h3 {
+#modal-text p,
+h3 {
   font-size: 1rem;
   padding: 0;
-  margin:0 1rem;
+  margin: 0 1rem;
 }
-#modal-text p:first-of-type{
+#modal-text p:first-of-type {
   margin-top: 1rem;
 }
 </style>

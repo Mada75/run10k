@@ -1,6 +1,6 @@
 <template>
   <div id="my-plan">
-    <user-nav-bar/>
+    <user-nav-bar />
     <user-calendar />
   </div>
 </template>
@@ -9,10 +9,10 @@ import { mapState } from 'vuex'
 import UserCalendar from '@/components/UserCalendar.vue'
 import UserNavBar from '@/components/UserNavBar.vue'
 
-
 export default {
   components: {
-    UserCalendar,UserNavBar
+    UserCalendar,
+    UserNavBar
   },
   computed: {
     ...mapState(['currentUser'])

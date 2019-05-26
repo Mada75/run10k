@@ -6,14 +6,13 @@
         <!-- logo visible on all screens -->
         <li class="logo">
           <a href="https://adp-cv.firebaseapp.com/" target="_blank">
-            <img src="../../public/ap-logo.png">
+            <img src="../../public/ap-logo.png" />
           </a>
         </li>
-        <li
-          class="desktop"
-          v-if="currentUser"
-        >
-          <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
+        <li class="desktop" v-if="currentUser">
+          <router-link :to="{ name: 'MyPlan' }" class="link"
+            >My Plan</router-link
+          >
         </li>
         <li class="desktop">
           <router-link :to="{ name: 'Home' }" class="link">Home</router-link>
@@ -29,7 +28,7 @@
         <!-- toggle mobile menu -->
         <li class="toggle-mobile-menu">
           <a href="#" @click="toggleMobileMenu()">
-            <fa-icon :icon="icon" class="icon"/>
+            <fa-icon :icon="icon" class="icon" />
           </a>
         </li>
       </ul>
@@ -44,7 +43,9 @@
         </li>
 
         <li class="mobile" v-if="currentUser" @click="toggleMobileMenu()">
-          <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
+          <router-link :to="{ name: 'MyPlan' }" class="link"
+            >My Plan</router-link
+          >
         </li>
 
         <li class="mobile" v-if="!currentUser" @click="toggleMobileMenu()">
@@ -61,13 +62,10 @@
 
 <script>
 import { mapState } from 'vuex'
-import UserNavBar from '@/components/UserNavBar.vue'
 
 const fb = require('../firebaseConfig.js')
 export default {
-  components: {
-    UserNavBar
-  },
+  components: {},
   data() {
     return {
       mobileMenuOpen: false,

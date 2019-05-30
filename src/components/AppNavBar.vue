@@ -55,7 +55,7 @@
           <a @click="logout" class="link">Logout</a>
         </li>
       </ul>
-      <ul v-if="currentUser" id="href-week">
+      <ul v-if="currentUser && myPlan" id="href-week">
         <li
           v-for="(week, index) in weekNumber"
           :key="index"
@@ -84,7 +84,6 @@ export default {
     return {
       mobileMenuOpen: false,
       icon: 'bars',
-      myPlan: false
     }
   },
   created() {
@@ -92,7 +91,17 @@ export default {
   },
 
   computed: {
-    ...mapState(['currentUser'])
+    ...mapState(['currentUser']),
+    myPlan(){
+        if(this.$route.path === "/myplan") {
+          console.log('yello')
+          return true
+        } else {
+                    console.log('yno loello')
+
+          return false
+        }
+    }
   },
   methods: {
     toggleMobileMenu() {

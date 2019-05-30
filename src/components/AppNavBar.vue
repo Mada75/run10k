@@ -6,11 +6,13 @@
         <!-- logo visible on all screens -->
         <li class="logo">
           <a href="https://adp-cv.firebaseapp.com/" target="_blank">
-            <img src="../../public/ap-logo.png">
+            <img src="../../public/ap-logo.png" />
           </a>
         </li>
         <li class="desktop" v-if="currentUser">
-          <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
+          <router-link :to="{ name: 'MyPlan' }" class="link"
+            >My Plan</router-link
+          >
         </li>
         <li class="desktop">
           <router-link :to="{ name: 'Home' }" class="link">Home</router-link>
@@ -26,7 +28,7 @@
         <!-- toggle mobile menu -->
         <li class="toggle-mobile-menu" @click="toggleMobileMenu()">
           <a>
-            <fa-icon :icon="icon" class="icon"/>
+            <fa-icon :icon="icon" class="icon" />
           </a>
         </li>
       </ul>
@@ -41,7 +43,9 @@
         </li>
 
         <li class="mobile" v-if="currentUser" @click="toggleMobileMenu()">
-          <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
+          <router-link :to="{ name: 'MyPlan' }" class="link"
+            >My Plan</router-link
+          >
         </li>
 
         <li class="mobile" v-if="!currentUser" @click="toggleMobileMenu()">
@@ -52,10 +56,14 @@
         </li>
       </ul>
       <ul v-if="currentUser" id="href-week">
-        <li v-for="(week, index) in weekNumber" :key="index" @click="toggleMobileMenu()">
+        <li
+          v-for="(week, index) in weekNumber"
+          :key="index"
+          @click="toggleMobileMenu()"
+        >
           <a :href="`#weekNo${week}`">
             Week
-            <br>
+            <br />
             {{ week }}
           </a>
         </li>

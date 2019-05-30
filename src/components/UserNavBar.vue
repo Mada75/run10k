@@ -19,7 +19,7 @@
       <li v-for="(week, index) in weekNumber" :key="index">
         <a :href="`#weekNo${week}`">
           Week
-          <br>
+          <br />
           {{ week }}
         </a>
       </li>

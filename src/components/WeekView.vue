@@ -87,4 +87,11 @@ export default {
   top: -64px;
   visibility: hidden;
 }
+#week-view {
+  /*     background-image: url('https://peaksport.nz/wp-content/uploads/2018/09/ultra-running-banner-peak.jpg');
+  background-size: cover; // always take up 100% available space
+  background-position: center ; // center image as will move depending on screen width
+  background-repeat: repeat;
+ */
+}
 </style>

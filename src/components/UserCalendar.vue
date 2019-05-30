@@ -1,6 +1,6 @@
 <template>
   <div>
-    <week-view :week="currentUserPlanWeekOne" :weekNo="'1'" />
+    <week-view :week="currentUserPlanWeekOne" :weekNo="'1'" class="testr" />
     <week-view :week="currentUserPlanWeekTwo" :weekNo="'2'" />
     <week-view :week="currentUserPlanWeekThree" :weekNo="'3'" />
     <week-view :week="currentUserPlanWeekFour" :weekNo="'4'" />
@@ -172,3 +172,11 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.testr {
+  background-image: url('https://peaksport.nz/wp-content/uploads/2018/09/ultra-running-banner-peak.jpg');
+  background-size: cover; // always take up 100% available space
+  background-position: center top; // center image as will move depending on screen width
+  background-repeat: no-repeat;
+}
+</style>

@@ -19,14 +19,14 @@
       <li v-for="(week, index) in weekNumber" :key="index">
         <a :href="`#weekNo${week}`">
           Week
-          <br>
+          <br />
           {{ week }}
         </a>
       </li>
       <!-- toggle mobile menu -->
       <li class="toggle-mobile-menu">
         <a href="#" @click="toggleMobileMenu()">
-          <fa-icon :icon="icon" class="icon"/>
+          <fa-icon :icon="icon" class="icon" />
         </a>
       </li>
     </ul>
@@ -165,6 +165,51 @@ export default {
 
   .toggle-mobile-menu {
     display: none;
+  }
+}
+@media screen and (max-width: 800px) {
+  #user-nav-bar {
+    width: 100%;
+    .user-menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      height: 100%;
+
+      li a,
+      li button {
+        color: white;
+        border: none;
+        //  line-height: 32px;
+        margin: 0 0.25rem;
+        min-width: 30px;
+        text-align: center;
+        display: block;
+        height: 100%;
+        background: rgba(21, 29, 52, 1);
+        filter: brightness(130%);
+      }
+      a {
+        padding-top: 10px;
+        &:hover {
+          color: orange;
+        }
+      }
+      button {
+        text-transform: capitalize;
+        &:hover {
+          text-decoration: underline;
+          color: orange;
+          cursor: pointer;
+        }
+      }
+
+      .toggle-mobile-menu {
+        display: none;
+      }
+    }
   }
 }
 </style>

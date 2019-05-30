@@ -8,6 +8,7 @@
     You want to hijack this event to save to the database without a page reload.
   -->
   <div>
+    <div>HELLO</div>
     <div>
       <section>
         <transition name="fade">
@@ -39,7 +40,7 @@
           />
 
           <!--           <button @click="login" class="button">Log In</button>
- -->
+          -->
           <div class="extras">
             <a @click="togglePasswordReset">Forgot Password</a>
             <a @click="toggleForm">Create an Account</a>

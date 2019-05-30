@@ -1,113 +1,128 @@
 <template>
-  <div id="login">
-    <transition name="fade">
-      <div v-if="performingRequest" class="loading">
-        <p>Loading...</p>
-      </div>
-    </transition>
-    <section>
-      <div class="col1">
-        <h1>10k Running Plan</h1>
-        <p>
-          Welcome to your 10k running plan powered by <a href="https://vuejs.org/">Vue.js</a>  and <a href="https://firebase.google.com/">Firebase</a>.
-          <br>Sign up for access to your personalised plan allowing you to add
-          notes and keep track of your progress.
-        </p>
-      </div>
-      <div class="col2" :class="{ 'signup-form': !showLoginForm && !showForgotPassword }">
-        <form v-if="showLoginForm" @submit.prevent>
-          <h1>Welcome Back</h1>
+  <div>
+    <login-text />
+    <div id="login">
+      <transition name="fade">
+        <div v-if="performingRequest" class="loading">
+          <p>Loading...</p>
+        </div>
+      </transition>
+      <section>
+        <div
+          class="col2"
+          :class="{ 'signup-form': !showLoginForm && !showForgotPassword }"
+        >
+          <form v-if="showLoginForm" @submit.prevent>
+            <h1>Welcome Back</h1>
 
-          <label for="email1">Email</label>
-          <input v-model.trim="loginForm.email" type="text" placeholder="you@email.com" id="email1">
-
-          <label for="password1">Password</label>
-          <input
-            v-model.trim="loginForm.password"
-            type="password"
-            placeholder="******"
-            id="password1"
-          >
-
-          <div class="extras">
-            <button @click="login" class="button">Log In</button>
-            <div>
-              <a @click="togglePasswordReset">Forgot Password</a>
-              <a @click="toggleForm">Create an Account</a>
-            </div>
-          </div>
-        </form>
-        <form v-if="!showLoginForm && !showForgotPassword" @submit.prevent>
-          <h1>Get Started</h1>
-
-          <label for="name">Name</label>
-          <input v-model.trim="signupForm.name" type="text" placeholder="Savvy Apps" id="name">
-
-          <label for="title">Title</label>
-          <input v-model.trim="signupForm.title" type="text" placeholder="Company" id="title">
-
-          <label for="email2">Email</label>
-          <input
-            v-model.trim="signupForm.email"
-            type="text"
-            placeholder="you@email.com"
-            id="email2"
-          >
-
-          <label for="password2">Password</label>
-          <input
-            v-model.trim="signupForm.password"
-            type="password"
-            placeholder="min 6 characters"
-            id="password2"
-          >
-
-          <div class="extras">
-            <button @click="signup" class="button">Sign Up</button>
-            <div>
-              <a @click="toggleForm">Back to Log In</a>
-            </div>
-          </div>
-        </form>
-        <form v-if="showForgotPassword" @submit.prevent class="password-reset">
-          <div v-if="!passwordResetSuccess">
-            <h1>Reset Password</h1>
-            <p>We will send you an email to reset your password</p>
-
-            <label for="email3">Email</label>
+            <label for="email1">Email</label>
             <input
-              v-model.trim="passwordForm.email"
+              v-model.trim="loginForm.email"
               type="text"
               placeholder="you@email.com"
-              id="email3"
-            >
+              id="email1"
+            />
+
+            <label for="password1">Password</label>
+            <input
+              v-model.trim="loginForm.password"
+              type="password"
+              placeholder="******"
+              id="password1"
+            />
 
             <div class="extras">
-              <button @click="resetPassword" class="button">Submit</button>
+              <button @click="login" class="button">Log In</button>
               <div>
-                <a @click="togglePasswordReset">Back to Log In</a>
+                <a @click="togglePasswordReset">Forgot Password</a>
+                <a @click="toggleForm">Create an Account</a>
               </div>
             </div>
-          </div>
-          <div v-else>
-            <h1>Email Sent</h1>
-            <p>check your email for a link to reset your password</p>
-            <button @click="togglePasswordReset" class="button">Back to login</button>
-          </div>
-        </form>
-        <transition name="fade">
-          <div v-if="errorMsg !== ''" class="error-msg">
-            <p>{{ errorMsg }}</p>
-          </div>
-        </transition>
-      </div>
-    </section>
+          </form>
+          <form v-if="!showLoginForm && !showForgotPassword" @submit.prevent>
+            <h1>Get Started</h1>
+
+            <label for="name">Name</label>
+            <input
+              v-model.trim="signupForm.name"
+              type="text"
+              placeholder="Forrest Gump"
+              id="name"
+            />
+
+            <!--           <label for="title">Title</label>
+          <input v-model.trim="signupForm.title" type="text" placeholder="Company" id="title">
+
+            -->
+            <label for="email2">Email</label>
+            <input
+              v-model.trim="signupForm.email"
+              type="text"
+              placeholder="you@email.com"
+              id="email2"
+            />
+
+            <label for="password2">Password</label>
+            <input
+              v-model.trim="signupForm.password"
+              type="password"
+              placeholder="min 6 characters"
+              id="password2"
+            />
+
+            <div class="extras">
+              <button @click="signup" class="button">Sign Up</button>
+              <div>
+                <a @click="toggleForm">Back to Log In</a>
+              </div>
+            </div>
+          </form>
+          <form
+            v-if="showForgotPassword"
+            @submit.prevent
+            class="password-reset"
+          >
+            <div v-if="!passwordResetSuccess">
+              <h1>Reset Password</h1>
+              <p>We will send you an email to reset your password</p>
+
+              <label for="email3">Email</label>
+              <input
+                v-model.trim="passwordForm.email"
+                type="text"
+                placeholder="you@email.com"
+                id="email3"
+              />
+
+              <div class="extras">
+                <button @click="resetPassword" class="button">Submit</button>
+                <div>
+                  <a @click="togglePasswordReset">Back to Log In</a>
+                </div>
+              </div>
+            </div>
+            <div v-else>
+              <h1>Email Sent</h1>
+              <p>check your email for a link to reset your password</p>
+              <button @click="togglePasswordReset" class="button">
+                Back to login
+              </button>
+            </div>
+          </form>
+          <transition name="fade">
+            <div v-if="errorMsg !== ''" class="error-msg">
+              <p>{{ errorMsg }}</p>
+            </div>
+          </transition>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
+import LoginText from '@/components/LoginText.vue'
 import { mapState } from 'vuex'
-
 import { db } from '@/firebaseConfig.js'
 import {
   weekOne,
@@ -122,6 +137,9 @@ import {
 
 const fb = require('../firebaseConfig.js')
 export default {
+  components: {
+    LoginText
+  },
   data() {
     return {
       loginForm: {
@@ -130,7 +148,6 @@ export default {
       },
       signupForm: {
         name: '',
-        title: '',
         email: '',
         password: ''
       },
@@ -231,8 +248,7 @@ export default {
           fb.usersCollection
             .doc(res.user.uid)
             .set({
-              name: this.signupForm.name,
-              title: this.signupForm.title
+              name: this.signupForm.name
             })
             .then(() => {
               this.$store.dispatch('fetchUserProfile')
@@ -290,7 +306,6 @@ export default {
         .catch(error => {
           console.log(error, 'there is an error')
         })
-
     }
   }
 }

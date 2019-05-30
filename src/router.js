@@ -95,7 +95,7 @@ router.beforeEach((to, from, next) => {
   const currentUser = firebase.auth().currentUser
   // redirect to home if needs auth & not logged in
   if (requiresAuth && !currentUser) {
-    next('/home')
+    next({ name: 'Home' })
   } else if (requiresAuth && currentUser) {
     next()
   } else {

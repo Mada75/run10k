@@ -66,27 +66,37 @@
 }
 @media screen and (max-width: 500px) {
   #nav-bar {
-    background-position: right 64px; // move down 64px for nav bar
+    background-position: right 48px; // move down 64px for nav bar
     max-height: 250px;
     // toggle primary nav for small screens
     #primary-nav {
       .desktop {
         display: none;
       }
-      .toggle-mobile-menu {
+      li.toggle-mobile-menu {
         display: inline-block;
+        height: 48px;
+        a {
+          height: 48px;
+          margin: 0;
+        }
       }
       .primary-menu {
         background: rgba(21, 29, 52, 1);
+        height: 48px;
       }
       .icon {
         font-size: 1.5rem;
+      }
+      .logo a img {
+        filter: invert(100%); // makes logo white
+        height: 48px;
       }
     }
     #mobile-nav.mobile-menu {
       .mobile {
         display: block;
-        line-height: 64px;
+        line-height: 48px;
         text-align: center;
         border-top: 1px solid white;
       }
@@ -130,7 +140,7 @@
       font-size: 1.2rem;
       margin-bottom: 1rem;
     }
-    a{
+    a {
       color: orange;
     }
   }
@@ -394,11 +404,11 @@
 #login section {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
   flex-wrap: nowrap;
-  min-height: 100vh;
   color: #34495e;
+  margin: 2rem 1rem;
   p {
     margin-top: 2rem;
     line-height: 1.8;
@@ -411,14 +421,13 @@
     }
   }
 }
-#login section .col1 {
-  flex: 0 0 50%;
-  padding: 25vh 5rem 1rem;
-  background: #e6ecf0;
-}
 #login section .col2 {
-  flex: 0 0 50%;
-  padding: 25vh 5rem 1rem;
+  max-width: 800px;
+
+  flex: 0 0 100%;
+  margin: 0 auto;
+  // padding: 25vh 5rem 1rem;
+  padding: 1rem;
   background: $white;
   .signup-form {
     padding-top: 20vh;

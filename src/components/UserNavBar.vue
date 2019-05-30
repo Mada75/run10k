@@ -19,40 +19,12 @@
       <li v-for="(week, index) in weekNumber" :key="index">
         <a :href="`#weekNo${week}`">
           Week
-          <br />
+          <br>
           {{ week }}
-        </a>
-      </li>
-      <!-- toggle mobile menu -->
-      <li class="toggle-mobile-menu">
-        <a href="#" @click="toggleMobileMenu()">
-          <fa-icon :icon="icon" class="icon" />
         </a>
       </li>
     </ul>
     <!-- end primary menu -->
-
-    <!-- start mobile menu -->
-    <!--     <nav id="mobile-nav" class="mobile-menu" v-show="mobileMenuOpen">
-      <ul>
-        <li class="mobile" @click="toggleMobileMenu()">
-          <router-link :to="{ name: 'Home' }" class="link">Home</router-link>
-        </li>
-
-        <li class="mobile" v-if="currentUser" @click="toggleMobileMenu()">
-          <router-link :to="{ name: 'MyPlan' }" class="link">My Plan</router-link>
-        </li>
-
-        <li class="mobile" v-if="!currentUser" @click="toggleMobileMenu()">
-          <router-link :to="{ name: 'Login' }" class="link">Login</router-link>
-        </li>
-        <li class="mobile" v-if="currentUser">
-          <a @click="logout" class="link">Logout</a>
-        </li>
-      </ul>
-    </nav>
-    -->
-    <!-- end start mobile menu -->
   </header>
 </template>
 
@@ -210,6 +182,11 @@ export default {
         display: none;
       }
     }
+  }
+}
+@media screen and (max-width: 500px) {
+  #user-nav-bar {
+    display: none;
   }
 }
 </style>

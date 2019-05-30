@@ -58,15 +58,26 @@
     }
   }
 }
+.bg-image {
+  display: none;
+}
+
 /* RESPONSIVE NAV-BAR SETTINGS */
 @media screen and (max-width: 800px) {
   #nav-bar {
     height: 300px;
   }
+  .bg-image {
+    display: none;
+  }
 }
 @media screen and (max-width: 500px) {
+  .bg-image {
+    display: block;
+  }
   #nav-bar {
-    background-position: right 48px; // move down 64px for nav bar
+    background: none;
+    // background-position: right 48px; // move down 48px for nav bar
     max-height: 250px;
     // toggle primary nav for small screens
     #primary-nav {
@@ -84,6 +95,11 @@
       .primary-menu {
         background: rgba(21, 29, 52, 1);
         height: 48px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    
       }
       .icon {
         font-size: 1.5rem;
@@ -94,6 +110,10 @@
       }
     }
     #mobile-nav.mobile-menu {
+      position: fixed;
+      top: 48px;
+      left: 0;
+      width: 100%;
       .mobile {
         display: block;
         line-height: 48px;

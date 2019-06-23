@@ -83,7 +83,7 @@ export default {
   data() {
     return {
       mobileMenuOpen: false,
-      icon: 'bars',
+      icon: 'bars'
     }
   },
   created() {
@@ -92,15 +92,15 @@ export default {
 
   computed: {
     ...mapState(['currentUser']),
-    myPlan(){
-        if(this.$route.path === "/myplan") {
-          console.log('yello')
-          return true
-        } else {
-                    console.log('yno loello')
+    myPlan() {
+      if (this.$route.path === '/myplan') {
+        console.log('yello')
+        return true
+      } else {
+        console.log('yno loello')
 
-          return false
-        }
+        return false
+      }
     }
   },
   methods: {

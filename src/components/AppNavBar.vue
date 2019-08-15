@@ -5,7 +5,7 @@
       <ul class="primary-menu">
         <!-- logo visible on all screens -->
         <li class="logo">
-          <a href="https://adp-cv.firebaseapp.com/" target="_blank">
+          <a href="https://adp-cv.web.app/" target="_blank">
             <img src="../../public/ap-logo.png" />
           </a>
         </li>
@@ -149,7 +149,7 @@ export default {
   }
 }
 .bg-image {
-  background-image: url('https://peaksport.nz/wp-content/uploads/2018/09/ultra-running-banner-peak.jpg');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/adp-run-10k.appspot.com/o/running-banner.jpg?alt=media&token=bbf9f21a-3860-4560-a00a-e1f3aa55ead9');
   background-size: cover; // always take up 100% available space
   background-position: center top; // center image as will move depending on screen width
   background-repeat: repeat;

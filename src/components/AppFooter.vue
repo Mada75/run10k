@@ -12,6 +12,17 @@
   </footer>
 </template>
 
+<style lang="scss" scoped>
+@media screen and (max-width: 500px) {
+  #footer {
+    margin-top: 2em;
+  }
+}
+#footer {
+  margin-top: 1em;
+}
+</style>
+
 <script>
 export default {
   data() {
